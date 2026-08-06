@@ -6,6 +6,7 @@ import styles from "./Experience.module.css";
 const projects = [
   {
     title: "Craftworkz",
+    url: "craftworkz.co.uk",
     image: "/images/sites/craftworkz.jpg",
     href: "#",
     colourClass: styles.blue,
@@ -13,13 +14,15 @@ const projects = [
   },
   {
     title: "Periot Reworked",
+    url: "periotreworked.co.uk",
     image: "/images/sites/reworked.jpg",
     href: "#",
-    colourClass: styles.orange,
+    colourClass: styles.purple,
     positionClass: styles.projectTwo,
   },
   {
     title: "Periot Digital",
+    url: "periotdigital.co.uk",
     image: "/images/sites/periot-digital.jpg",
     href: "/",
     colourClass: styles.pink,
@@ -27,6 +30,7 @@ const projects = [
   },
   {
     title: "Concept Project",
+    url: "concept-project.co.uk",
     image: "/images/sites/concept.jpg",
     href: "#",
     colourClass: styles.green,
@@ -49,20 +53,16 @@ export default function Experience() {
           <Link
             key={project.title}
             href={project.href}
+            aria-label={`View ${project.title}`}
             className={`${styles.project} ${project.positionClass}`}
           >
             <div className={`${styles.frame} ${project.colourClass}`}>
+              <p className={styles.url}>
+                <span aria-hidden="true">↗</span>
+                {project.url}
+              </p>
+
               <div className={styles.window}>
-                <div className={styles.windowBar}>
-                  <div className={styles.dots} aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-
-                  <span>{project.title}</span>
-                </div>
-
                 <div className={styles.imageWrapper}>
                   <Image
                     src={project.image}
@@ -73,8 +73,6 @@ export default function Experience() {
                   />
                 </div>
               </div>
-
-              <p className={styles.title}>{project.title}</p>
             </div>
           </Link>
         ))}

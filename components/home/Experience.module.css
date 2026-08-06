@@ -162,37 +162,21 @@
     0 14px 40px rgba(0, 0, 0, 0.55);
 }
 
-.windowBar {
-  position: relative;
-  height: 34px;
+.url {
+  margin-bottom: 14px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: #111;
-}
-
-.windowBar > span {
-  font-size: 0.5rem;
-  letter-spacing: 0.16em;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+
+  color: rgba(255, 255, 255, 0.45);
+
+  transition: color 0.35s ease;
 }
 
-.dots {
-  position: absolute;
-  left: 13px;
-  display: flex;
-  gap: 5px;
-}
-
-.dots span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+.project:hover .url {
+  color: white;
 }
 
 .imageWrapper {
