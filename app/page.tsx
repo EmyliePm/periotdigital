@@ -1,3 +1,17 @@
+import Hero from "@/components/home/Hero";
+
 export default function Home() {
-  return <main>Hello Periot Studio</main>;
+  return (
+    <main>
+      <Hero />
+
+      <section
+        id="work"
+        style={{
+          minHeight: "100vh",
+          background: "#020306",
+        }}
+      />
+    </main>
+  );
 }
