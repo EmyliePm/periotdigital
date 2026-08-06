@@ -1,6 +1,39 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const router = useRouter();
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      const target = event.target as HTMLElement;
+
+      // Don't trigger while typing in a form field
+      if (
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable
+      ) {
+        return;
+      }
+
+      if (event.key === "Enter") {
+        router.push("/enter");
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [router]);
+
   return (
     <section className={styles.hero}>
       <div className={styles.glow} aria-hidden="true" />
@@ -21,10 +54,10 @@ export default function Hero() {
         </p>
       </div>
 
-      <a href="#work" className={styles.scroll}>
+      <Link href="/enter" className={styles.scroll}>
         <span>Enter</span>
         <span className={styles.scrollLine} aria-hidden="true" />
-      </a>
+      </Link>
     </section>
   );
 }

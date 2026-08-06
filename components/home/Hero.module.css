@@ -286,7 +286,14 @@
   background: rgba(255, 255, 255, 0.75);
   animation: scrollLine 2.2s ease-in-out infinite;
 }
+.scroll:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
 
+.scroll:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 10px;
+}
 /* Animation */
 
 @keyframes titleReveal {
