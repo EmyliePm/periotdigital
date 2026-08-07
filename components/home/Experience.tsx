@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import ProjectHologram from "./ProjectHologram";
 import styles from "./Experience.module.css";
+import ProjectViewer from "./ProjectViewer";
 
 export default function Experience() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
@@ -140,48 +141,20 @@ export default function Experience() {
         </div>
 
         {/* Project hologram */}
-        <ProjectHologram
-          onSelect={() => setSelectedProject("craftworkz")}
-        />
+ {selectedProject !== "craftworkz" && (
+  <ProjectHologram
+    onSelect={() => setSelectedProject("craftworkz")}
+  />
+)}
 
         {/* OPEN STUDIO portal later */}
       </section>
 
       {/* Selected project viewer */}
       {selectedProject === "craftworkz" && (
-        <div className={styles.projectViewer}>
-          <button
-            type="button"
-            className={styles.closeViewer}
-            onClick={() => setSelectedProject(null)}
-          >
-            CLOSE
-          </button>
-
-          <div className={styles.viewerContent}>
-            <p className={styles.viewerLabel}>PROJECT_01</p>
-
-            <h2>CRAFTWORKZ</h2>
-
-            <p className={styles.viewerType}>
-              Property services website
-            </p>
-
-            <div className={styles.viewerActions}>
-              <a
-                href="https://craftworkz.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LAUNCH SITE ↗
-              </a>
-
-              <button type="button">
-                BUILD NOTES
-              </button>
-            </div>
-          </div>
-        </div>
+       <ProjectViewer
+  onClose={() => setSelectedProject(null)}
+/>
       )}
     </main>
   );
