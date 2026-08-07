@@ -1,0 +1,359 @@
+.position {
+  position: absolute;
+  width:min(24vw,420px);
+  top: 14%;
+  right: 8%;
+  z-index: 10;
+
+  /*
+    Slightly stronger mouse movement than the debris,
+    making this feel closer to the viewer.
+  */
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -20px),
+      calc(var(--mouse-y, 0) * -20px)
+    );
+
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.small{
+    width:320px;
+}
+
+.medium{
+    width:420px;
+}
+
+.large{
+    width:520px;
+}
+
+.hologram {
+  position: relative;
+
+  opacity: 0;
+
+  animation:
+    hologramArrival 1.6s 9.2s forwards,
+    hologramDrift 6s 11s ease-in-out infinite alternate;
+
+  will-change: transform;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 8px;
+
+  font-size: 0.48rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(108, 196, 255, 0.55);
+}
+
+.status {
+  color: #5bffb6;
+
+  text-shadow:
+    0 0 6px rgba(91, 255, 182, 0.8),
+    0 0 16px rgba(91, 255, 182, 0.3);
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  margin-bottom: 12px;
+}
+
+.titleRow h2 {
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.titleRow span {
+  font-size: 0.43rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.28);
+}
+
+
+.frame {
+  position: relative;
+
+  padding: 3px;
+
+  border: 1px solid rgba(72, 176, 255, 0.7);
+
+  background: rgba(1, 5, 9, 0.72);
+
+  box-shadow:
+    0 0 6px rgba(72, 176, 255, 0.55),
+    0 0 22px rgba(72, 176, 255, 0.22),
+    0 0 60px rgba(80, 92, 255, 0.08),
+    inset 0 0 18px rgba(72, 176, 255, 0.04);
+
+  backdrop-filter: blur(4px);
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  background: #020304;
+}
+
+.image {
+ display:block;
+
+    width:100%;
+    height:auto;
+
+  opacity: 0.88;
+
+  filter:
+   contrast(1.05)
+        saturate(.88)
+        brightness(.96);
+
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 3px,
+      rgba(90, 190, 255, 0.035) 4px
+    );
+
+  opacity: 0.7;
+
+  transition: opacity 0.4s ease;
+}
+
+.scanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15%;
+
+  height: 12%;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(87, 196, 255, 0.12),
+      rgba(124, 92, 255, 0.22),
+      transparent
+    );
+
+  filter: blur(2px);
+
+  animation: scannerMove 4.5s 10.7s linear infinite;
+}
+
+.bootMask {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #020408 0,
+      #020408 7px,
+      rgba(55, 150, 255, 0.35) 8px,
+      #020408 9px
+    );
+
+  transform-origin: top;
+
+  animation: assemble 1.8s 9.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes assemble {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 0.9;
+  }
+
+  100% {
+    clip-path: inset(100% 0 0 0);
+    opacity: 0;
+  }
+}
+
+.corner {
+  position: absolute;
+
+  width: 14px;
+  height: 14px;
+
+  pointer-events: none;
+
+  border-color: #6cc4ff;
+
+  filter:
+    drop-shadow(0 0 4px rgba(108, 196, 255, 0.8));
+}
+
+.topLeft {
+  top: -5px;
+  left: -5px;
+
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.topRight {
+  top: -5px;
+  right: -5px;
+
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.bottomLeft {
+  bottom: -5px;
+  left: -5px;
+
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.bottomRight {
+  right: -5px;
+  bottom: -5px;
+
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 10px;
+
+  font-size: 0.45rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.hologram:hover .frame {
+  border-color: #8dd7ff;
+
+  box-shadow:
+    0 0 9px rgba(72, 176, 255, 0.8),
+    0 0 28px rgba(72, 176, 255, 0.38),
+    0 0 80px rgba(124, 92, 255, 0.14),
+    inset 0 0 18px rgba(72, 176, 255, 0.06);
+}
+
+.hologram:hover .image {
+  opacity: 1;
+  filter:
+    contrast(1)
+    saturate(1);
+}
+
+.hologram:hover .scanlines {
+  opacity: 0.2;
+}
+
+@keyframes hologramArrival {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes hologramDrift {
+  from {
+    transform: translate3d(0, -3px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 4px, 0);
+  }
+}
+
+@keyframes scannerMove {
+  from {
+    top: -15%;
+  }
+
+  to {
+    top: 110%;
+  }
+}
+
+.projectButton {
+  all: unset;
+
+  display: block;
+
+  cursor: pointer;
+}
+.projectButton:focus-visible .frame {
+  border-color: #8dd7ff;
+
+  box-shadow:
+    0 0 10px rgba(108, 196, 255, 0.8),
+    0 0 30px rgba(108, 196, 255, 0.3);
+}
+
+@media (max-width: 800px) {
+  .position {
+    top: 24%;
+    right: 8%;
+    width: 78vw;
+  }
+
+  .titleRow span {
+    display: none;
+  }
+}

@@ -1,24 +1,37 @@
 "use client";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+
+import ProjectHologram from "./ProjectHologram";
 import styles from "./Experience.module.css";
 
 export default function Experience() {
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+
   useEffect(() => {
-  function handleMouseMove(event: MouseEvent) {
-    const x = event.clientX / window.innerWidth - 0.5;
-    const y = event.clientY / window.innerHeight - 0.5;
+    function handleMouseMove(event: MouseEvent) {
+      const x = event.clientX / window.innerWidth - 0.5;
+      const y = event.clientY / window.innerHeight - 0.5;
 
-    document.documentElement.style.setProperty("--mouse-x", x.toString());
-    document.documentElement.style.setProperty("--mouse-y", y.toString());
-  }
+      document.documentElement.style.setProperty(
+        "--mouse-x",
+        x.toString()
+      );
 
-  window.addEventListener("mousemove", handleMouseMove);
+      document.documentElement.style.setProperty(
+        "--mouse-y",
+        y.toString()
+      );
+    }
 
-  return () => {
-    window.removeEventListener("mousemove", handleMouseMove);
-  };
-}, []);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <main className={styles.experience}>
       {/* Exit */}
@@ -68,7 +81,11 @@ export default function Experience() {
       </div>
 
       {/* Workspace */}
-      <section className={styles.workspace}>
+      <section
+        className={`${styles.workspace} ${
+          selectedProject ? styles.workspaceDimmed : ""
+        }`}
+      >
         {/* Main debris layer */}
         <div className={styles.debris} aria-hidden="true">
           <span className={`${styles.fragment} ${styles.fragmentOne}`}>
@@ -122,10 +139,50 @@ export default function Experience() {
           <div className={styles.cornerOne}>⌜</div>
         </div>
 
-        {/* Projects will go here next */}
+        {/* Project hologram */}
+        <ProjectHologram
+          onSelect={() => setSelectedProject("craftworkz")}
+        />
 
-        {/* OPEN STUDIO portal will go here later */}
+        {/* OPEN STUDIO portal later */}
       </section>
+
+      {/* Selected project viewer */}
+      {selectedProject === "craftworkz" && (
+        <div className={styles.projectViewer}>
+          <button
+            type="button"
+            className={styles.closeViewer}
+            onClick={() => setSelectedProject(null)}
+          >
+            CLOSE
+          </button>
+
+          <div className={styles.viewerContent}>
+            <p className={styles.viewerLabel}>PROJECT_01</p>
+
+            <h2>CRAFTWORKZ</h2>
+
+            <p className={styles.viewerType}>
+              Property services website
+            </p>
+
+            <div className={styles.viewerActions}>
+              <a
+                href="https://craftworkz.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LAUNCH SITE ↗
+              </a>
+
+              <button type="button">
+                BUILD NOTES
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
