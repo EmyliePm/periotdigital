@@ -1,33 +1,29 @@
 .position {
   position: absolute;
-  width:min(24vw,420px);
-  top: 14%;
-  right: 8%;
+  top: 15%;
+  left: 8%;
+
+  width: min(24vw, 420px);
+
   z-index: 10;
 
-  /*
-    Slightly stronger mouse movement than the debris,
-    making this feel closer to the viewer.
-  */
-  transform:
-    translate(
-      calc(var(--mouse-x, 0) * -20px),
-      calc(var(--mouse-y, 0) * -20px)
-    );
+  transform: translate(
+    calc(var(--mouse-x, 0) * -20px),
+    calc(var(--mouse-y, 0) * -20px)
+  );
 
-  transition:
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.small{
-    width:320px;
+.small {
+  width: 320px;
 }
 
-.medium{
-    width:420px;
+.medium {
+  width: 420px;
 }
 
-.large{
-    width:520px;
+.large {
+  width: 520px;
 }
 
 .hologram {
@@ -92,7 +88,6 @@
   color: rgba(255, 255, 255, 0.28);
 }
 
-
 .frame {
   position: relative;
 
@@ -122,17 +117,14 @@
 }
 
 .image {
- display:block;
+  display: block;
 
-    width:100%;
-    height:auto;
+  width: 100%;
+  height: auto;
 
   opacity: 0.88;
 
-  filter:
-   contrast(1.05)
-        saturate(.88)
-        brightness(.96);
+  filter: contrast(1.05) saturate(0.88) brightness(0.96);
 
   transition:
     opacity 0.5s ease,
@@ -145,13 +137,12 @@
 
   pointer-events: none;
 
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 3px,
-      rgba(90, 190, 255, 0.035) 4px
-    );
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(90, 190, 255, 0.035) 4px
+  );
 
   opacity: 0.7;
 
@@ -168,14 +159,13 @@
 
   pointer-events: none;
 
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(87, 196, 255, 0.12),
-      rgba(124, 92, 255, 0.22),
-      transparent
-    );
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(87, 196, 255, 0.12),
+    rgba(124, 92, 255, 0.22),
+    transparent
+  );
 
   filter: blur(2px);
 
@@ -188,14 +178,13 @@
 
   pointer-events: none;
 
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      #020408 0,
-      #020408 7px,
-      rgba(55, 150, 255, 0.35) 8px,
-      #020408 9px
-    );
+  background: repeating-linear-gradient(
+    to bottom,
+    #020408 0,
+    #020408 7px,
+    rgba(55, 150, 255, 0.35) 8px,
+    #020408 9px
+  );
 
   transform-origin: top;
 
@@ -228,8 +217,7 @@
 
   border-color: #6cc4ff;
 
-  filter:
-    drop-shadow(0 0 4px rgba(108, 196, 255, 0.8));
+  filter: drop-shadow(0 0 4px rgba(108, 196, 255, 0.8));
 }
 
 .topLeft {
@@ -290,9 +278,7 @@
 
 .hologram:hover .image {
   opacity: 1;
-  filter:
-    contrast(1)
-    saturate(1);
+  filter: contrast(1) saturate(1);
 }
 
 .hologram:hover .scanlines {

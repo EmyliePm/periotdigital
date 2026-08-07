@@ -15,15 +15,9 @@ export default function Experience() {
       const x = event.clientX / window.innerWidth - 0.5;
       const y = event.clientY / window.innerHeight - 0.5;
 
-      document.documentElement.style.setProperty(
-        "--mouse-x",
-        x.toString()
-      );
+      document.documentElement.style.setProperty("--mouse-x", x.toString());
 
-      document.documentElement.style.setProperty(
-        "--mouse-y",
-        y.toString()
-      );
+      document.documentElement.style.setProperty("--mouse-y", y.toString());
     }
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -70,9 +64,7 @@ export default function Experience() {
             </span>
           </p>
 
-          <p className={styles.connected}>
-            &gt; LINK ESTABLISHED
-          </p>
+          <p className={styles.connected}>&gt; LINK ESTABLISHED</p>
         </div>
       </section>
 
@@ -141,20 +133,17 @@ export default function Experience() {
         </div>
 
         {/* Project hologram */}
- {selectedProject !== "craftworkz" && (
-  <ProjectHologram
-    onSelect={() => setSelectedProject("craftworkz")}
-  />
-)}
+        <ProjectHologram
+          onSelect={() => setSelectedProject("craftworkz")}
+          hidden={selectedProject === "craftworkz"}
+        />
 
         {/* OPEN STUDIO portal later */}
       </section>
 
       {/* Selected project viewer */}
       {selectedProject === "craftworkz" && (
-       <ProjectViewer
-  onClose={() => setSelectedProject(null)}
-/>
+        <ProjectViewer onClose={() => setSelectedProject(null)} />
       )}
     </main>
   );
