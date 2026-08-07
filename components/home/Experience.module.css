@@ -124,6 +124,14 @@
     radial-gradient(circle at 98% 31%, rgba(255,255,255,.7) 0 1px, transparent 1.4px);
 
   animation: starsReveal 1.8s 6.25s forwards;
+
+    transform:
+    translate(
+      calc(var(--mouse-x, 0) * -3px),
+      calc(var(--mouse-y, 0) * -3px)
+    );
+
+transition: transform .8s cubic-bezier(.16,1,.3,1);
 }
 
 @keyframes starsReveal {
@@ -163,6 +171,14 @@
   animation:
     brightStarsReveal 2s 6.8s forwards,
     brightStarsTwinkle 4.5s 8.5s ease-in-out infinite;
+
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -5px),
+      calc(var(--mouse-y, 0) * -5px)
+    );
+
+transition: transform .8s cubic-bezier(.16,1,.3,1);
 }
 
 @keyframes brightStarsReveal {
@@ -509,6 +525,13 @@
   overflow: hidden;
 
   pointer-events: none;
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -12px),
+      calc(var(--mouse-y, 0) * -12px)
+    );
+
+  transition: transform 0.22s ease-out;
 }
 
 .fragment,
@@ -720,6 +743,13 @@
   filter: blur(0.7px);
 
   animation: farLayerReveal 2s 7.6s forwards;
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -7px),
+      calc(var(--mouse-y, 0) * -7px)
+    );
+
+  transition: transform 0.3s ease-out;
 }
 
 .debrisFar span,
