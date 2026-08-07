@@ -965,3 +965,19 @@
     display: none;
   }
 }
+.packageGrid {
+  position: absolute;
+
+  top: 18%;
+  left: 2.5%;
+  right: 2.5%;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 3vw;
+
+  align-items: start;
+
+  z-index: 10;
+}

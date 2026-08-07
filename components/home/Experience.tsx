@@ -4,11 +4,141 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ProjectHologram from "./ProjectHologram";
-import styles from "./Experience.module.css";
 import ProjectViewer from "./ProjectViewer";
+import styles from "./Experience.module.css";
+
+export type PackageData = {
+  id: string;
+  name: string;
+  price: string;
+  carePrice: string;
+  tagline: string;
+
+  exampleName: string;
+  exampleBusiness: string;
+
+  viewerImage?: string;
+  url?: string;
+
+  included: string[];
+  idealFor: string[];
+
+  available: boolean;
+};
+
+const packageData = {
+  essential: {
+    id: "01",
+    name: "ESSENTIAL",
+    price: "£299",
+    carePrice: "£20",
+
+    tagline: "Everything you need to establish a professional online presence.",
+
+    exampleName: "CRAFTWORKZ",
+    exampleBusiness: "Craftworkz Property Services",
+
+    viewerImage: "/images/sites/craftworkz.jpg",
+    url: "https://craftworkz.co.uk",
+
+    included: [
+      "Fully bespoke design",
+      "Brand colours & imagery",
+      "Responsive on all devices",
+      "Contact form",
+      "Hosting setup & guidance",
+      "SEO foundations",
+    ],
+
+    idealFor: [
+      "Local businesses",
+      "Trades",
+      "Startups",
+      "Simple service websites",
+      "Businesses focused on enquiries",
+    ],
+
+    available: true,
+  },
+
+  enhanced: {
+    id: "02",
+    name: "ENHANCED",
+    price: "£699",
+    carePrice: "£35",
+
+    tagline:
+      "A richer, more expressive website designed to help your business stand out.",
+
+    exampleName: "PERIOT REWORKED",
+    exampleBusiness: "Periot Reworked",
+
+    viewerImage: "/images/sites/reworked.jpg",
+    url: "#",
+
+    included: [
+      "Everything in Essential",
+      "Expanded bespoke design",
+      "Enhanced animations",
+      "Additional pages",
+      "Portfolio or gallery sections",
+      "Testimonials & FAQs",
+      "Analytics setup",
+      "Enhanced SEO foundations",
+    ],
+
+    idealFor: [
+      "Established businesses",
+      "Creative businesses",
+      "Growing brands",
+      "Portfolio-led businesses",
+      "Businesses wanting a stronger identity",
+    ],
+
+    available: true,
+  },
+
+  signature: {
+    id: "03",
+    name: "SIGNATURE",
+    price: "£1500",
+    carePrice: "CUSTOM",
+
+    tagline:
+      "Flagship digital experiences designed entirely around your business.",
+
+    exampleName: "PERIOT DIGITAL",
+    exampleBusiness: "Periot Digital",
+
+    included: [
+      "Everything in Enhanced",
+      "Completely tailored experience",
+      "Advanced interactions",
+      "Custom functionality",
+      "Integrations",
+      "UX strategy",
+      "Advanced animations",
+      "Bespoke development",
+    ],
+
+    idealFor: [
+      "Established brands",
+      "Ambitious businesses",
+      "Digital-first companies",
+      "Businesses needing custom functionality",
+      "Brands wanting something unforgettable",
+    ],
+
+    available: false,
+  },
+} satisfies Record<string, PackageData>;
+
+type PackageKey = keyof typeof packageData;
 
 export default function Experience() {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<PackageKey | null>(
+    null,
+  );
 
   useEffect(() => {
     function handleMouseMove(event: MouseEvent) {
@@ -30,10 +160,12 @@ export default function Experience() {
   return (
     <main className={styles.experience}>
       {/* Exit */}
-      <Link href="/" className={styles.exit}>
-        <span aria-hidden="true">◄</span>
-        <span>EXIT</span>
-      </Link>
+      {!selectedPackage && (
+        <Link href="/" className={styles.exit}>
+          <span aria-hidden="true">◄</span>
+          <span>EXIT</span>
+        </Link>
+      )}
 
       {/* Deep space */}
       <div className={styles.background} aria-hidden="true">
@@ -74,12 +206,8 @@ export default function Experience() {
       </div>
 
       {/* Workspace */}
-      <section
-        className={`${styles.workspace} ${
-          selectedProject ? styles.workspaceDimmed : ""
-        }`}
-      >
-        {/* Main debris layer */}
+      <section className={styles.workspace}>
+        {/* Main debris */}
         <div className={styles.debris} aria-hidden="true">
           <span className={`${styles.fragment} ${styles.fragmentOne}`}>
             {"<Button />"}
@@ -118,7 +246,7 @@ export default function Experience() {
           <div className={`${styles.shape} ${styles.shapeThree}`} />
         </div>
 
-        {/* Far debris layer */}
+        {/* Far debris */}
         <div className={styles.debrisFar} aria-hidden="true">
           <span className={styles.farOne}>READY</span>
           <span className={styles.farTwo}>DEPTH / 04</span>
@@ -131,19 +259,37 @@ export default function Experience() {
           <div className={styles.circleOne} />
           <div className={styles.cornerOne}>⌜</div>
         </div>
+        <div className={styles.packageGrid}>
+          <ProjectHologram
+            packageData={packageData.essential}
+            variant="essential"
+            onSelect={() => setSelectedPackage("essential")}
+            hidden={selectedPackage !== null}
+          />
 
-        {/* Project hologram */}
-        <ProjectHologram
-          onSelect={() => setSelectedProject("craftworkz")}
-          hidden={selectedProject === "craftworkz"}
-        />
+          <ProjectHologram
+            packageData={packageData.enhanced}
+            variant="enhanced"
+            onSelect={() => setSelectedPackage("enhanced")}
+            hidden={selectedPackage !== null}
+          />
 
-        {/* OPEN STUDIO portal later */}
+          <ProjectHologram
+            packageData={packageData.signature}
+            variant="signature"
+            onSelect={() => {}}
+            hidden={selectedPackage !== null}
+          />
+        </div>
       </section>
 
-      {/* Selected project viewer */}
-      {selectedProject === "craftworkz" && (
-        <ProjectViewer onClose={() => setSelectedProject(null)} />
+      {/* Package viewer */}
+      {selectedPackage && (
+        <ProjectViewer
+          key={selectedPackage}
+          packageData={packageData[selectedPackage]}
+          onClose={() => setSelectedPackage(null)}
+        />
       )}
     </main>
   );
