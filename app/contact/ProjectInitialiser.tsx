@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -64,6 +64,7 @@ const stages = [
 ];
 
 export default function ProjectInitialiser() {
+    
   const searchParams = useSearchParams();
 
   const incomingPackage =
@@ -88,7 +89,18 @@ export default function ProjectInitialiser() {
 
   const [transmitting, setTransmitting] =
     useState(false);
+const [displayStep, setDisplayStep] =
+  useState("01");
 
+const [stageDirection, setStageDirection] =
+  useState<"forward" | "back">("forward");
+
+const [stageChanging, setStageChanging] =
+  useState(false);
+
+const scrambleTimer = useRef<number | null>(
+  null
+);
   const [submitted, setSubmitted] =
     useState(false);
 
@@ -105,7 +117,64 @@ export default function ProjectInitialiser() {
       package: validIncomingPackage,
     }));
   }, [validIncomingPackage]);
+useEffect(() => {
+  if (scrambleTimer.current) {
+    window.clearInterval(
+      scrambleTimer.current
+    );
+  }
 
+  const finalValue =
+    String(step).padStart(2, "0");
+
+  const characters = [
+    "03",
+    "08",
+    "14",
+    "21",
+    "--",
+    "07",
+    "11",
+    finalValue,
+  ];
+
+  let index = 0;
+
+  scrambleTimer.current =
+    window.setInterval(() => {
+      setDisplayStep(
+        characters[index] ??
+          finalValue
+      );
+
+      index += 1;
+
+      if (
+        index >=
+        characters.length
+      ) {
+        if (
+          scrambleTimer.current
+        ) {
+          window.clearInterval(
+            scrambleTimer.current
+          );
+        }
+
+        setDisplayStep(
+          finalValue
+        );
+      }
+    }, 45);
+
+  return () => {
+    if (scrambleTimer.current) {
+      window.clearInterval(
+        scrambleTimer.current
+      );
+    }
+  };
+}, [step]);
   function updateField<K extends keyof FormData>(
     field: K,
     value: FormData[K]
@@ -116,37 +185,59 @@ export default function ProjectInitialiser() {
     }));
   }
 
-  function nextStep() {
-    setStep((current) =>
-      Math.min(current + 1, 5)
-    );
+function changeStep(
+  next: number,
+  direction: "forward" | "back"
+) {
+  if (stageChanging) {
+    return;
   }
 
-  function previousStep() {
-    setStep((current) =>
-      Math.max(current - 1, 1)
-    );
-  }
+  setStageDirection(direction);
+  setStageChanging(true);
 
-  function handleProjectSelect(
-    value: ProjectType
-  ) {
-    updateField("projectType", value);
+  window.setTimeout(() => {
+    setStep(next);
 
     window.setTimeout(() => {
-      setStep(2);
-    }, 220);
-  }
+      setStageChanging(false);
+    }, 30);
+  }, 260);
+}
 
-  function handlePackageSelect(
-    value: PackageOption
-  ) {
-    updateField("package", value);
+function nextStep() {
+  changeStep(
+    Math.min(step + 1, 5),
+    "forward"
+  );
+}
 
-    window.setTimeout(() => {
-      setStep(3);
-    }, 220);
-  }
+function previousStep() {
+  changeStep(
+    Math.max(step - 1, 1),
+    "back"
+  );
+}
+
+function handleProjectSelect(
+  value: ProjectType
+) {
+  updateField("projectType", value);
+
+  window.setTimeout(() => {
+    changeStep(2, "forward");
+  }, 420);
+}
+
+function handlePackageSelect(
+  value: PackageOption
+) {
+  updateField("package", value);
+
+  window.setTimeout(() => {
+    changeStep(3, "forward");
+  }, 420);
+}
 
   function canContinueBrief() {
     return (
@@ -354,10 +445,16 @@ export default function ProjectInitialiser() {
     </div>
   </div>
 
-  <div className={styles.stepReadout}>
-    <span>PROJECT /</span>
-    <strong>0{step}</strong>
-  </div>
+<div className={styles.stepReadout}>
+  <span>PROJECT /</span>
+
+  <strong
+    key={displayStep}
+    className={styles.scramblingNumber}
+  >
+    {displayStep}
+  </strong>
+</div>
 </header>
 
         <div
@@ -368,9 +465,18 @@ export default function ProjectInitialiser() {
           currentStep={step}
         />
 
-        <div
-          className={styles.stage}
-        >
+    <div
+  key={step}
+  className={`${styles.stage} ${
+    stageChanging
+      ? stageDirection === "forward"
+        ? styles.stageExitLeft
+        : styles.stageExitRight
+      : stageDirection === "forward"
+        ? styles.stageEnterRight
+        : styles.stageEnterLeft
+  }`}
+>
           {step === 1 && (
             <ProjectStage
               value={
