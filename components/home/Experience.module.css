@@ -1,10 +1,14 @@
 .experience {
   position: relative;
+
   min-height: 100svh;
+
   overflow: hidden;
+
   background: #000;
   color: white;
 }
+
 
 /* =========================
    EXIT BUTTON
@@ -12,33 +16,46 @@
 
 .exit {
   position: fixed;
+
   top: 24px;
   left: 24px;
+
   z-index: 100;
 
   display: inline-flex;
   align-items: center;
+
   gap: 10px;
 
   padding: 10px 16px;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 8px;
 
-  background: rgba(5, 5, 8, 0.45);
+  background:
+    rgba(5, 5, 8, 0.45);
+
   backdrop-filter: blur(10px);
 
   font-size: 0.7rem;
   font-weight: 500;
+
   letter-spacing: 0.25em;
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.45);
+  color:
+    rgba(255, 255, 255, 0.45);
+
   text-decoration: none;
 
   opacity: 0;
 
-  animation: exitReveal 0.8s 6.8s forwards;
+  animation:
+    exitReveal 0.8s
+    6.8s
+    forwards;
 
   transition:
     color 0.25s ease,
@@ -51,15 +68,20 @@
 .exit:hover {
   color: #5bffb6;
 
-  border-color: rgba(91, 255, 182, 0.5);
+  border-color:
+    rgba(91, 255, 182, 0.5);
 
-  background: rgba(10, 15, 12, 0.6);
+  background:
+    rgba(10, 15, 12, 0.6);
 
   box-shadow:
-    0 0 12px rgba(91, 255, 182, 0.28),
-    0 0 28px rgba(91, 255, 182, 0.1);
+    0 0 12px
+      rgba(91, 255, 182, 0.28),
+    0 0 28px
+      rgba(91, 255, 182, 0.1);
 
-  transform: translateX(-2px);
+  transform:
+    translateX(-2px);
 }
 
 @keyframes exitReveal {
@@ -68,21 +90,29 @@
   }
 }
 
+
 /* =========================
    DEEP SPACE
 ========================= */
 
 .background {
   position: fixed;
+
   inset: 0;
+
   z-index: 0;
 
   overflow: hidden;
 
   background:
-    radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.5), transparent 60%),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(10, 12, 18, 0.5),
+      transparent 60%
+    ),
     #000;
 }
+
 
 /* =========================
    STARS
@@ -90,6 +120,7 @@
 
 .stars {
   position: absolute;
+
   inset: 0;
 
   opacity: 0;
@@ -196,27 +227,38 @@
       transparent 1.4px
     );
 
-  animation: starsReveal 1.8s 6.25s forwards;
+  animation:
+    starsReveal 1.8s
+    6.25s
+    forwards;
 
-  transform: translate(
-    calc(var(--mouse-x, 0) * -3px),
-    calc(var(--mouse-y, 0) * -3px)
-  );
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -3px),
+      calc(var(--mouse-y, 0) * -3px)
+    );
 
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes starsReveal {
   from {
     opacity: 0;
-    filter: blur(3px);
+
+    filter:
+      blur(3px);
   }
 
   to {
     opacity: 0.6;
-    filter: blur(0);
+
+    filter:
+      blur(0);
   }
 }
+
 
 /* =========================
    BRIGHT ACCENT STARS
@@ -224,30 +266,63 @@
 
 .brightStars {
   position: absolute;
+
   inset: 0;
 
   opacity: 0;
 
   background-image:
-    radial-gradient(circle at 26% 54%, #4ea1ff 0 1.2px, transparent 2.2px),
-    radial-gradient(circle at 63% 18%, #ffffff 0 1.1px, transparent 2px),
-    radial-gradient(circle at 81% 35%, #b76cff 0 1.2px, transparent 2.2px),
-    radial-gradient(circle at 72% 72%, #5bffb6 0 1.1px, transparent 2px),
-    radial-gradient(circle at 14% 79%, #6d7cff 0 1.2px, transparent 2.2px);
+    radial-gradient(
+      circle at 26% 54%,
+      #4ea1ff 0 1.2px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 63% 18%,
+      #ffffff 0 1.1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 81% 35%,
+      #b76cff 0 1.2px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 72% 72%,
+      #5bffb6 0 1.1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 14% 79%,
+      #6d7cff 0 1.2px,
+      transparent 2.2px
+    );
 
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 10px rgba(90, 130, 255, 0.45));
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(255, 255, 255, 0.6)
+    )
+    drop-shadow(
+      0 0 10px
+      rgba(90, 130, 255, 0.45)
+    );
 
   animation:
-    brightStarsReveal 2s 6.8s forwards,
-    brightStarsTwinkle 4.5s 8.5s ease-in-out infinite;
+    brightStarsReveal 2s
+      6.8s forwards,
+    brightStarsTwinkle 4.5s
+      8.5s ease-in-out infinite;
 
-  transform: translate(
-    calc(var(--mouse-x, 0) * -5px),
-    calc(var(--mouse-y, 0) * -5px)
-  );
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -5px),
+      calc(var(--mouse-y, 0) * -5px)
+    );
 
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes brightStarsReveal {
@@ -267,12 +342,14 @@
   }
 }
 
+
 /* =========================
    NEBULA
 ========================= */
 
 .nebula {
   position: absolute;
+
   top: 48%;
   left: 50%;
 
@@ -281,25 +358,33 @@
 
   border-radius: 50%;
 
-  background: radial-gradient(
-    ellipse,
-    rgba(71, 82, 220, 0.12) 0%,
-    rgba(91, 48, 180, 0.075) 30%,
-    rgba(20, 92, 160, 0.045) 52%,
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(71, 82, 220, 0.12) 0%,
+      rgba(91, 48, 180, 0.075) 30%,
+      rgba(20, 92, 160, 0.045) 52%,
+      transparent 72%
+    );
 
-  filter: blur(120px);
+  filter:
+    blur(120px);
 
   opacity: 0;
 
-  transform: translate(-50%, -50%) rotate(-12deg);
+  transform:
+    translate(-50%, -50%)
+    rotate(-12deg);
 
-  animation: nebulaReveal 2.8s 6.6s forwards;
+  animation:
+    nebulaReveal 2.8s
+    6.6s
+    forwards;
 }
 
 .nebulaSecondary {
   position: absolute;
+
   top: 28%;
   left: 76%;
 
@@ -308,20 +393,26 @@
 
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    rgba(0, 210, 255, 0.055),
-    rgba(91, 255, 182, 0.025) 35%,
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 210, 255, 0.055),
+      rgba(91, 255, 182, 0.025) 35%,
+      transparent 70%
+    );
 
-  filter: blur(130px);
+  filter:
+    blur(130px);
 
   opacity: 0;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
-  animation: nebulaSecondaryReveal 3s 7s forwards;
+  animation:
+    nebulaSecondaryReveal 3s
+    7s
+    forwards;
 }
 
 @keyframes nebulaReveal {
@@ -336,13 +427,16 @@
   }
 }
 
+
 /* =========================
    BOOT SEQUENCE
 ========================= */
 
 .boot {
   position: fixed;
+
   inset: 0;
+
   z-index: 30;
 
   pointer-events: none;
@@ -350,6 +444,7 @@
 
 .bootMessages {
   position: absolute;
+
   inset: 0;
 
   display: flex;
@@ -362,17 +457,21 @@
 .bootText {
   display: flex;
   align-items: center;
+
   gap: 4px;
 
   opacity: 0;
 
   font-size: 1rem;
   font-weight: 500;
+
   letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.72);
+  color:
+    rgba(255, 255, 255, 0.72);
 }
+
 
 /* Message 1 */
 
@@ -383,9 +482,12 @@
   margin-bottom: 10vh;
 
   animation:
-    bootReveal 0.8s 0.3s forwards,
-    bootHide 0.5s 1.9s forwards;
+    bootReveal 0.8s
+      0.3s forwards,
+    bootHide 0.5s
+      1.9s forwards;
 }
+
 
 /* Message 2 */
 
@@ -395,9 +497,12 @@
   margin-bottom: 12vh;
 
   animation:
-    bootReveal 0.8s 2.2s forwards,
-    bootHide 0.5s 3.8s forwards;
+    bootReveal 0.8s
+      2.2s forwards,
+    bootHide 0.5s
+      3.8s forwards;
 }
+
 
 /* Final success message */
 
@@ -408,38 +513,50 @@
 
   font-size: 1.45rem;
   font-weight: 500;
+
   letter-spacing: 0.35em;
   text-transform: uppercase;
 
   color: #5bffb6;
 
   text-shadow:
-    0 0 10px rgba(91, 255, 182, 0.9),
-    0 0 40px rgba(91, 255, 182, 0.45);
+    0 0 10px
+      rgba(91, 255, 182, 0.9),
+    0 0 40px
+      rgba(91, 255, 182, 0.45);
 
   animation:
-    bootReveal 0.7s 4.1s forwards,
-    bootHide 0.6s 5.4s forwards;
+    bootReveal 0.7s
+      4.1s forwards,
+    bootHide 0.6s
+      5.4s forwards;
 }
 
 @keyframes bootReveal {
   from {
     opacity: 0;
-    transform: translateY(8px);
+
+    transform:
+      translateY(8px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
 @keyframes bootHide {
   to {
     opacity: 0;
-    transform: translateY(-8px);
+
+    transform:
+      translateY(-8px);
   }
 }
+
 
 /* =========================
    LOADING DOTS
@@ -447,21 +564,28 @@
 
 .loading {
   display: inline-flex;
+
   width: 22px;
+
   justify-content: space-between;
 }
 
 .loading span {
   opacity: 0;
-  animation: blink 1.2s infinite;
+
+  animation:
+    blink 1.2s
+    infinite;
 }
 
 .loading span:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay:
+    0.2s;
 }
 
 .loading span:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay:
+    0.4s;
 }
 
 @keyframes blink {
@@ -480,16 +604,20 @@
   }
 }
 
+
 /* =========================
    DIGITAL BIG BANG
 ========================= */
 
 .pulse {
   position: fixed;
+
   inset: 0;
+
   z-index: 40;
 
   display: grid;
+
   place-items: center;
 
   pointer-events: none;
@@ -512,18 +640,23 @@
     0 0 60px #6d4cff,
     0 0 120px #00c8ff;
 
-  animation: bigBang 1.6s 5.8s forwards;
+  animation:
+    bigBang 1.6s
+    5.8s
+    forwards;
 }
 
 .ring::after {
   content: "";
 
   position: absolute;
+
   inset: -4px;
 
-  border-radius: 50%;
+  border:
+    2px solid #7c5cff;
 
-  border: 2px solid #7c5cff;
+  border-radius: 50%;
 
   opacity: 0.5;
 }
@@ -531,19 +664,26 @@
 @keyframes bigBang {
   0% {
     opacity: 0;
-    transform: scale(0.2);
+
+    transform:
+      scale(0.2);
   }
 
   10% {
     opacity: 1;
-    transform: scale(1);
+
+    transform:
+      scale(1);
   }
 
   100% {
     opacity: 0;
-    transform: scale(260);
+
+    transform:
+      scale(260);
   }
 }
+
 
 /* =========================
    WORKSPACE
@@ -551,27 +691,62 @@
 
 .workspace {
   position: relative;
+
   z-index: 10;
 
   min-height: 100svh;
 
   opacity: 0;
-  filter: blur(12px);
 
-  animation: workspaceReveal 1.2s 6.8s forwards;
+  filter:
+    blur(12px);
+
+  animation:
+    workspaceReveal 1.2s
+    6.8s
+    forwards;
 }
 
 @keyframes workspaceReveal {
   from {
     opacity: 0;
-    filter: blur(12px);
+
+    filter:
+      blur(12px);
   }
 
   to {
     opacity: 1;
-    filter: blur(0);
+
+    filter:
+      blur(0);
   }
 }
+
+
+/* =========================
+   PACKAGE GRID
+========================= */
+
+.packageGrid {
+  position: absolute;
+
+  top: 18%;
+  left: 2.5%;
+  right: 2.5%;
+
+  z-index: 10;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  align-items: start;
+
+  gap: 3vw;
+}
+
 
 /* =========================
    MAIN DEBRIS LAYER
@@ -579,16 +754,22 @@
 
 .debris {
   position: absolute;
+
   inset: 0;
+
   overflow: hidden;
 
   pointer-events: none;
-  transform: translate(
-    calc(var(--mouse-x, 0) * -12px),
-    calc(var(--mouse-y, 0) * -12px)
-  );
 
-  transition: transform 0.22s ease-out;
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -12px),
+      calc(var(--mouse-y, 0) * -12px)
+    );
+
+  transition:
+    transform 0.22s
+    ease-out;
 }
 
 .fragment,
@@ -599,24 +780,32 @@
 
   animation:
     debrisReveal 1.4s forwards,
-    debrisFloat 8s ease-in-out infinite alternate;
+    debrisFloat 8s ease-in-out
+      infinite alternate;
 
   will-change: transform;
 }
 
 .fragment {
-  font-family: var(--font-body);
+  font-family:
+    var(--font-body);
+
   font-size: 0.58rem;
   font-weight: 500;
+
   letter-spacing: 0.16em;
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.34);
+  color:
+    rgba(255, 255, 255, 0.34);
 
   text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.12),
-    0 0 16px rgba(90, 130, 255, 0.08);
+    0 0 6px
+      rgba(255, 255, 255, 0.12),
+    0 0 16px
+      rgba(90, 130, 255, 0.08);
 }
+
 
 /* Debris positions */
 
@@ -624,7 +813,9 @@
   top: 30%;
   left: 24%;
 
-  animation-delay: 7.2s, 8.6s;
+  animation-delay:
+    7.2s,
+    8.6s;
 }
 
 .fragmentTwo {
@@ -634,18 +825,25 @@
   color: #b76cff;
 
   text-shadow:
-    0 0 5px rgba(183, 108, 255, 0.9),
-    0 0 14px rgba(183, 108, 255, 0.5),
-    0 0 30px rgba(183, 108, 255, 0.18);
+    0 0 5px
+      rgba(183, 108, 255, 0.9),
+    0 0 14px
+      rgba(183, 108, 255, 0.5),
+    0 0 30px
+      rgba(183, 108, 255, 0.18);
 
-  animation-delay: 7.5s, 9s;
+  animation-delay:
+    7.5s,
+    9s;
 }
 
 .fragmentThree {
   top: 40%;
   left: 19%;
 
-  animation-delay: 7.8s, 9.4s;
+  animation-delay:
+    7.8s,
+    9.4s;
 }
 
 .fragmentFour {
@@ -655,47 +853,64 @@
   color: #4ea1ff;
 
   text-shadow:
-    0 0 5px rgba(78, 161, 255, 0.9),
-    0 0 14px rgba(78, 161, 255, 0.48),
-    0 0 30px rgba(78, 161, 255, 0.16);
+    0 0 5px
+      rgba(78, 161, 255, 0.9),
+    0 0 14px
+      rgba(78, 161, 255, 0.48),
+    0 0 30px
+      rgba(78, 161, 255, 0.16);
 
-  animation-delay: 8s, 9.6s;
+  animation-delay:
+    8s,
+    9.6s;
 }
 
 .fragmentFive {
   bottom: 17%;
   left: 6%;
 
-  animation-delay: 8.3s, 9.9s;
+  animation-delay:
+    8.3s,
+    9.9s;
 }
 
 .fragmentSix {
-  bottom: 12%;
   right: 28%;
+  bottom: 12%;
 
   color: #5bffb6;
 
   text-shadow:
-    0 0 5px rgba(91, 255, 182, 0.9),
-    0 0 14px rgba(91, 255, 182, 0.45),
-    0 0 30px rgba(91, 255, 182, 0.15);
+    0 0 5px
+      rgba(91, 255, 182, 0.9),
+    0 0 14px
+      rgba(91, 255, 182, 0.45),
+    0 0 30px
+      rgba(91, 255, 182, 0.15);
 
-  animation-delay: 8.5s, 10.2s;
+  animation-delay:
+    8.5s,
+    10.2s;
 }
 
 .fragmentSeven {
   top: 31%;
   left: 49%;
 
-  animation-delay: 8.7s, 10.5s;
+  animation-delay:
+    8.7s,
+    10.5s;
 }
 
 .fragmentEight {
   top: 72%;
   right: 6%;
 
-  animation-delay: 8.9s, 10.8s;
+  animation-delay:
+    8.9s,
+    10.8s;
 }
+
 
 /* =========================
    GEOMETRIC DEBRIS
@@ -705,11 +920,14 @@
   width: 56px;
   height: 56px;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border:
+    1px solid rgba(255, 255, 255, 0.14);
 
   box-shadow:
-    inset 0 0 18px rgba(255, 255, 255, 0.025),
-    0 0 12px rgba(80, 120, 255, 0.06);
+    inset 0 0 18px
+      rgba(255, 255, 255, 0.025),
+    0 0 12px
+      rgba(80, 120, 255, 0.06);
 }
 
 .shapeOne {
@@ -719,13 +937,18 @@
   width: 38px;
   height: 38px;
 
-  border-color: rgba(78, 161, 255, 0.32);
+  border-color:
+    rgba(78, 161, 255, 0.32);
 
   box-shadow:
-    0 0 10px rgba(78, 161, 255, 0.18),
-    inset 0 0 12px rgba(78, 161, 255, 0.04);
+    0 0 10px
+      rgba(78, 161, 255, 0.18),
+    inset 0 0 12px
+      rgba(78, 161, 255, 0.04);
 
-  animation-delay: 7.6s, 9.1s;
+  animation-delay:
+    7.6s,
+    9.1s;
 }
 
 .shapeTwo {
@@ -735,13 +958,18 @@
   width: 72px;
   height: 26px;
 
-  border-color: rgba(168, 85, 247, 0.28);
+  border-color:
+    rgba(168, 85, 247, 0.28);
 
   box-shadow:
-    0 0 10px rgba(168, 85, 247, 0.16),
-    inset 0 0 12px rgba(168, 85, 247, 0.04);
+    0 0 10px
+      rgba(168, 85, 247, 0.16),
+    inset 0 0 12px
+      rgba(168, 85, 247, 0.04);
 
-  animation-delay: 8.1s, 9.7s;
+  animation-delay:
+    8.1s,
+    9.7s;
 }
 
 .shapeThree {
@@ -751,36 +979,56 @@
   width: 22px;
   height: 92px;
 
-  border-color: rgba(91, 255, 182, 0.3);
+  border-color:
+    rgba(91, 255, 182, 0.3);
 
   box-shadow:
-    0 0 10px rgba(91, 255, 182, 0.16),
-    inset 0 0 12px rgba(91, 255, 182, 0.04);
+    0 0 10px
+      rgba(91, 255, 182, 0.16),
+    inset 0 0 12px
+      rgba(91, 255, 182, 0.04);
 
-  animation-delay: 8.5s, 10.1s;
+  animation-delay:
+    8.5s,
+    10.1s;
 }
 
 @keyframes debrisReveal {
   from {
     opacity: 0;
-    filter: blur(8px);
+
+    filter:
+      blur(8px);
   }
 
   to {
     opacity: 1;
-    filter: blur(0);
+
+    filter:
+      blur(0);
   }
 }
 
 @keyframes debrisFloat {
   from {
-    transform: translate3d(-4px, -3px, 0);
+    transform:
+      translate3d(
+        -4px,
+        -3px,
+        0
+      );
   }
 
   to {
-    transform: translate3d(6px, 5px, 0);
+    transform:
+      translate3d(
+        6px,
+        5px,
+        0
+      );
   }
 }
+
 
 /* =========================
    FAR DEBRIS LAYER
@@ -788,21 +1036,32 @@
 
 .debrisFar {
   position: absolute;
+
   inset: 0;
+
   overflow: hidden;
 
   pointer-events: none;
 
   opacity: 0;
-  filter: blur(0.7px);
 
-  animation: farLayerReveal 2s 7.6s forwards;
-  transform: translate(
-    calc(var(--mouse-x, 0) * -7px),
-    calc(var(--mouse-y, 0) * -7px)
-  );
+  filter:
+    blur(0.7px);
 
-  transition: transform 0.3s ease-out;
+  animation:
+    farLayerReveal 2s
+    7.6s
+    forwards;
+
+  transform:
+    translate(
+      calc(var(--mouse-x, 0) * -7px),
+      calc(var(--mouse-y, 0) * -7px)
+    );
+
+  transition:
+    transform 0.3s
+    ease-out;
 }
 
 .debrisFar span,
@@ -811,10 +1070,12 @@
 
   font-size: 0.46rem;
   font-weight: 500;
+
   letter-spacing: 0.18em;
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.16);
+  color:
+    rgba(255, 255, 255, 0.16);
 }
 
 .farOne {
@@ -838,9 +1099,10 @@
 }
 
 .farFive {
-  bottom: 8%;
   right: 44%;
+  bottom: 8%;
 }
+
 
 /* Far geometry */
 
@@ -848,20 +1110,30 @@
   top: 18%;
   left: 72%;
 
-  color: rgba(78, 161, 255, 0.28) !important;
-  font-size: 0.9rem !important;
+  color:
+    rgba(78, 161, 255, 0.28) !important;
 
-  text-shadow: 0 0 8px rgba(78, 161, 255, 0.3);
+  font-size:
+    0.9rem !important;
+
+  text-shadow:
+    0 0 8px
+    rgba(78, 161, 255, 0.3);
 }
 
 .crossTwo {
   bottom: 24%;
   left: 22%;
 
-  color: rgba(168, 85, 247, 0.24) !important;
-  font-size: 0.8rem !important;
+  color:
+    rgba(168, 85, 247, 0.24) !important;
 
-  text-shadow: 0 0 8px rgba(168, 85, 247, 0.28);
+  font-size:
+    0.8rem !important;
+
+  text-shadow:
+    0 0 8px
+    rgba(168, 85, 247, 0.28);
 }
 
 .circleOne {
@@ -871,18 +1143,25 @@
   width: 18px;
   height: 18px;
 
-  border: 1px solid rgba(91, 255, 182, 0.25);
+  border:
+    1px solid rgba(91, 255, 182, 0.25);
+
   border-radius: 50%;
 
-  box-shadow: 0 0 10px rgba(91, 255, 182, 0.14);
+  box-shadow:
+    0 0 10px
+    rgba(91, 255, 182, 0.14);
 }
 
 .cornerOne {
   top: 35%;
   left: 46%;
 
-  color: rgba(255, 255, 255, 0.13) !important;
-  font-size: 1rem !important;
+  color:
+    rgba(255, 255, 255, 0.13) !important;
+
+  font-size:
+    1rem !important;
 }
 
 @keyframes farLayerReveal {
@@ -895,38 +1174,259 @@
   }
 }
 
+
 /* =========================
-   MOBILE
+   TABLET / MOBILE
 ========================= */
 
 @media (max-width: 800px) {
-  .bootText:first-child {
-    margin-left: 8vw;
+  .experience {
+    min-height: 100svh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
+  /*
+   * The page becomes vertically scrollable.
+   * Background remains fixed.
+   */
+  .workspace {
+    min-height: auto;
+
+    padding-bottom: 140px;
+  }
+
+
+  /* =========================
+     PACKAGE STACK
+  ========================= */
+
+  .packageGrid {
+    position: relative;
+
+    top: auto;
+    left: auto;
+    right: auto;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 84px;
+
+    padding:
+      120px
+      18px
+      80px;
+  }
+
+
+  /* =========================
+     EXIT
+  ========================= */
+
+  .exit {
+    top: 12px;
+    left: 10px;
+
+    padding:
+      8px
+      12px;
+
+    font-size: 0.58rem;
+
+    transform: none;
+  }
+
+  .exit:hover {
+    transform: none;
+  }
+
+
+  /* =========================
+     BOOT
+  ========================= */
+
   .bootText {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
+
+    letter-spacing: 0.16em;
+  }
+
+  .bootText:first-child {
+    margin-left: 8vw;
+    margin-bottom: 9vh;
+  }
+
+  .bootText:nth-child(2) {
+    margin-bottom: 10vh;
+
+    padding:
+      0
+      22px;
+
+    text-align: center;
   }
 
   .connected {
-    font-size: 1rem;
-    letter-spacing: 0.25em;
+    width: 90%;
+
+    font-size: 0.86rem;
+    line-height: 1.55;
+
+    letter-spacing: 0.2em;
+
+    text-align: center;
+  }
+
+
+  /* =========================
+     DEBRIS
+  ========================= */
+
+  /*
+   * Mobile doesn't have enough spare space
+   * for desktop debris between the cards.
+   * Keep only a few quiet fragments below
+   * the package stack.
+   */
+
+  .fragmentOne,
+  .fragmentTwo,
+  .fragmentThree,
+  .fragmentFour,
+  .fragmentSeven,
+  .shapeOne,
+  .shapeTwo,
+  .farOne,
+  .farTwo,
+  .farThree,
+  .farFour,
+  .crossOne,
+  .crossTwo,
+  .cornerOne {
+    display: none;
+  }
+
+  .debris,
+  .debrisFar {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+  }
+
+  .fragmentFive {
+    top: auto;
+    left: 7%;
+    bottom: 40px;
+
+    font-size: 0.4rem;
+
+    opacity: 0.28;
+  }
+
+  .fragmentSix {
+    top: auto;
+    right: 7%;
+    bottom: 86px;
+
+    font-size: 0.4rem;
+
+    opacity: 0.32;
+  }
+
+  .fragmentEight {
+    top: auto;
+    right: 7%;
+    bottom: 20px;
+
+    font-size: 0.38rem;
+
+    opacity: 0.22;
+  }
+
+  .shapeThree {
+    top: auto;
+    right: 8%;
+    bottom: 58px;
+
+    width: 14px;
+    height: 55px;
+
+    opacity: 0.12;
+  }
+
+  .farFive {
+    top: auto;
+    right: auto;
+    bottom: 24px;
+    left: 50%;
+
+    opacity: 0.08;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .circleOne {
+    top: auto;
+    right: 12%;
+    bottom: 100px;
+
+    width: 13px;
+    height: 13px;
+
+    opacity: 0.12;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+  .packageGrid {
+    gap: 70px;
+
+    padding:
+      100px
+      12px
+      70px;
   }
 
   .exit {
-    top: 16px;
-    left: 16px;
+    top: 10px;
+    left: 8px;
+
+    padding:
+      7px
+      10px;
+
+    font-size: 0.52rem;
   }
 
-  .fragment {
-    font-size: 0.46rem;
+  .connected {
+    font-size: 0.75rem;
+
+    letter-spacing: 0.17em;
   }
 
-  .shapeOne,
-  .shapeTwo {
-    transform: scale(0.8);
+  .fragmentFive,
+  .fragmentSix,
+  .fragmentEight,
+  .farFive,
+  .shapeThree,
+  .circleOne {
+    display: none;
   }
 }
+
 
 /* =========================
    REDUCED MOTION
@@ -958,26 +1458,11 @@
   .debrisFar,
   .exit {
     opacity: 1;
+
     filter: none;
   }
 
   .boot {
     display: none;
   }
-}
-.packageGrid {
-  position: absolute;
-
-  top: 18%;
-  left: 2.5%;
-  right: 2.5%;
-
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 3vw;
-
-  align-items: start;
-
-  z-index: 10;
 }

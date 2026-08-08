@@ -1142,40 +1142,148 @@
 ========================= */
 
 @media (max-width: 800px) {
+
+  /*
+   * The grid/flex wrapper now controls where
+   * each package lives.
+   */
   .position {
-    width: 84vw;
-  }
+    position: relative;
 
-  .essentialPosition {
-    top: 16%;
-    left: 8%;
-
-    width: 84vw;
-  }
-
-  .enhancedPosition {
-    top: 62%;
-    left: 8%;
-
-    width: 84vw;
-
-    margin-left: 0;
-  }
-
-  .signaturePosition {
-    top: 108%;
-    left: 8%;
+    top: auto;
+    left: auto;
     right: auto;
 
-    width: 84vw;
+    width: min(92vw, 440px);
+
+    margin: 0;
+
+    transform:
+      translate(
+        calc(var(--mouse-x, 0) * -5px),
+        calc(var(--mouse-y, 0) * -5px)
+      );
   }
 
-  .signatureCore {
-    width: 54px;
-    height: 54px;
+  .essentialPosition,
+  .enhancedPosition,
+  .signaturePosition {
+    top: auto;
+    left: auto;
+    right: auto;
+
+    width: min(92vw, 440px);
+
+    margin: 0;
+  }
+
+
+  /* Make labels breathe */
+
+  .meta {
+    gap: 12px;
+
+    font-size: 0.42rem;
+    letter-spacing: 0.18em;
+  }
+
+  .titleRow {
+    gap: 12px;
+
+    margin-bottom: 10px;
+  }
+
+  .titleRow h2 {
+    font-size: 0.72rem;
   }
 
   .titleRow span {
+    font-size: 0.36rem;
+    letter-spacing: 0.14em;
+  }
+
+
+  /* =========================
+     ARTEFACT SIZE
+  ========================= */
+
+  .essentialArtefact,
+  .enhancedArtefact,
+  .signatureArtefact {
+    aspect-ratio: 16 / 10;
+  }
+
+
+  /* ESSENTIAL */
+
+  .essentialArtefact {
+    padding: 16px;
+  }
+
+  .browser {
+    width: 68%;
+  }
+
+  .structure {
+    width: 72%;
+  }
+
+
+  /* ENHANCED */
+
+  .panelOne {
+    left: 10%;
+    width: 57%;
+  }
+
+  .panelTwo {
+    right: 7%;
+    width: 54%;
+  }
+
+  .panelThree {
+    left: 8%;
+    width: 52%;
+  }
+
+  .panelFour {
+    right: 10%;
+    width: 48%;
+  }
+
+
+  /* SIGNATURE */
+
+  .signatureCore {
+    width: 58px;
+    height: 58px;
+  }
+
+  .signatureText {
+    bottom: 9%;
+  }
+
+  .signatureText span {
     font-size: 0.38rem;
+  }
+
+  .signatureText strong {
+    font-size: 0.58rem;
+  }
+
+  .signatureText small {
+    font-size: 0.29rem;
+  }
+
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .footer {
+    gap: 10px;
+
+    font-size: 0.35rem;
+    letter-spacing: 0.12em;
   }
 }
