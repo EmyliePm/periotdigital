@@ -294,22 +294,21 @@
 ========================= */
 
 .systemLabel {
-  margin:
-    0
-    0
-    12px;
+  display: block;
 
-  font-size: 0.48rem;
-  font-weight: 500;
+  margin-bottom: 14px;
 
-  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  line-height: 1.4;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 
   color: #4ea1ff;
 
   text-shadow:
-    0 0 10px
-    rgba(78, 161, 255, 0.3);
+    0 0 10px rgba(78, 161, 255, 0.18);
 }
 
 
@@ -832,17 +831,16 @@
 }
 
 .stageHeading p {
-  max-width: 700px;
+  max-width: 760px;
 
   margin: 0;
 
-  font-size: 0.88rem;
-  line-height: 1.75;
+  font-size: 1.15rem;
+  line-height: 1.7;
 
-  letter-spacing: 0.05em;
+  letter-spacing: 0.035em;
 
-  color:
-    rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -1011,27 +1009,27 @@
 }
 .choice > span {
   position: relative;
-
   z-index: 2;
 
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
 
-  letter-spacing: 0.13em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .choice small {
   position: relative;
-
   z-index: 2;
 
-  font-size: 0.52rem;
+  font-size: 1rem;
 
-  letter-spacing: 0.06em;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 
-  color:
-    rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .choiceCorner {
@@ -1076,53 +1074,51 @@
 .field {
   display: flex;
   flex-direction: column;
-
+  margin-bottom: 38px;
   gap: 10px;
 }
 
 .field > span {
-  font-size: 0.48rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
 
-  letter-spacing: 0.2em;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 
-  color:
-    rgba(78, 161, 255, 0.9);
+  color: rgba(78, 161, 255, 0.95);
+
+  text-shadow:
+    0 0 10px rgba(78, 161, 255, 0.16);
 }
 
-.field input,
-.field textarea {
+.input,
+.textarea {
   width: 100%;
+  min-height: 130px;
+
+  resize: vertical;
+  padding: 16px 2px 18px;
 
   border: 0;
-
-  border-bottom:
-    1px solid
-    rgba(255, 255, 255, 0.16);
-
-  border-radius: 0;
+  border-bottom: 1px solid rgba(91, 255, 182, 0.55);
 
   outline: none;
 
-  padding:
-    14px
-    2px
-    16px;
-
   background: transparent;
 
-  font: inherit;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
 
-  font-size: 1.02rem;
   line-height: 1.6;
 
-  color:
-    rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.9);
 
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 }
 
 .field textarea {
@@ -1135,8 +1131,11 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color:
-    rgba(255, 255, 255, 0.34);
+ font-size: 1.1rem;
+
+  color: rgba(255, 255, 255, 0.36);
+
+  opacity: 1;
 }
 
 .field input:focus,
@@ -1170,29 +1169,29 @@
   display: flex;
   align-items: center;
 
-  gap: 14px;
+  gap: 20px;
 
-  min-height: 60px;
+  min-height: 78px;
 
-  padding:
-    14px
-    18px;
+  padding: 18px 22px;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.08);
+    rgba(255, 255, 255, 0.1);
 
   background:
     rgba(3, 6, 10, 0.42);
 
   color:
-    rgba(255, 255, 255, 0.55);
+    rgba(255, 255, 255, 0.72);
 
   font-family: inherit;
 
-  font-size: 0.52rem;
+  font-size: 0.82rem;
+  font-weight: 500;
 
-  letter-spacing: 0.12em;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 
   text-align: left;
@@ -1216,20 +1215,19 @@
 .toggleBox {
   flex-shrink: 0;
 
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 
   display: grid;
-
   place-items: center;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.18);
+    rgba(255, 255, 255, 0.26);
 
   color: #5bffb6;
 
-  font-size: 0.65rem;
+  font-size: 0.8rem;
 }
 
 .toggleSelected {
@@ -1259,7 +1257,7 @@
     0
     0;
 
-  font-size: 0.58rem;
+  font-size: 0.92rem;
   line-height: 1.7;
 
   letter-spacing: 0.06em;
@@ -1272,23 +1270,25 @@
 /* =========================
    CONTROLS
 ========================= */
+/* =========================
+   CONTROLS
+========================= */
 
 .controls {
-  min-height: 70px;
+  min-height: 96px;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 
-  gap: 20px;
+  gap: 24px;
 
-  margin-top: 38px;
-
-  padding-top: 22px;
+  margin-top: 46px;
+  padding-top: 28px;
 
   border-top:
     1px solid
-    rgba(255, 255, 255, 0.055);
+    rgba(255, 255, 255, 0.09);
 }
 
 .backButton,
@@ -1296,14 +1296,18 @@
 .transmitButton {
   border: 0;
 
+  padding: 14px 0;
+
   background: transparent;
 
   font-family: inherit;
 
-  font-size: 0.52rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
 
-  letter-spacing: 0.2em;
+  line-height: 1;
+
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 
   cursor: pointer;
@@ -1311,53 +1315,74 @@
   transition:
     color 0.25s ease,
     opacity 0.25s ease,
-    text-shadow 0.25s ease;
+    text-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
+
+/* BACK */
+
 .backButton {
-  color:
-    rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .backButton:hover {
-  color:
-    rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.95);
+
+  transform: translateX(-4px);
+
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.16);
 }
 
+
+/* CONTINUE */
+
 .nextButton {
-  color:
-    rgba(78, 161, 255, 0.9);
+  color: #62b4ff;
+
+  text-shadow:
+    0 0 12px rgba(78, 161, 255, 0.22);
 }
 
 .nextButton:hover {
-  color: #76c1ff;
+  color: #8acaff;
+
+  transform: translateX(4px);
 
   text-shadow:
-    0 0 10px
-    rgba(78, 161, 255, 0.35);
+    0 0 12px rgba(78, 161, 255, 0.6),
+    0 0 28px rgba(78, 161, 255, 0.18);
 }
+
+
+/* TRANSMIT */
 
 .transmitButton {
   color: #5bffb6;
 
   text-shadow:
-    0 0 10px
-    rgba(91, 255, 182, 0.25);
+    0 0 12px rgba(91, 255, 182, 0.32);
 }
 
 .transmitButton:hover {
+  transform: translateX(4px);
+
   text-shadow:
-    0 0 10px
-      rgba(91, 255, 182, 0.7),
-    0 0 24px
-      rgba(91, 255, 182, 0.24);
+    0 0 12px rgba(91, 255, 182, 0.8),
+    0 0 30px rgba(91, 255, 182, 0.28);
 }
+
+
+/* DISABLED */
 
 .nextButton:disabled,
 .transmitButton:disabled {
-  opacity: 0.18;
+  opacity: 0.28;
 
   cursor: default;
+
+  transform: none;
 
   text-shadow: none;
 }
@@ -1962,7 +1987,12 @@
     transform,
     filter;
 }
+.stageHeading p {
+  font-size: 1rem;
+  line-height: 1.65;
 
+  color: rgba(255, 255, 255, 0.68);
+}
 .stageEnterRight {
   animation:
     stageEnterRight
@@ -2143,13 +2173,6 @@
     font-size: 1.7rem;
   }
 
-  .stageHeading p {
-    font-size: 0.78rem;
-    line-height: 1.7;
-
-    color:
-      rgba(255, 255, 255, 0.5);
-  }
 
 
   /* Options */
