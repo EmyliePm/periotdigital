@@ -6,16 +6,9 @@ import Link from "next/link";
 
 import styles from "./ProjectInitialiser.module.css";
 
-type PackageOption =
-  | "essential"
-  | "enhanced"
-  | "signature"
-  | "not-sure";
+type PackageOption = "essential" | "enhanced" | "signature" | "not-sure";
 
-type ProjectType =
-  | "new"
-  | "existing"
-  | "something-else";
+type ProjectType = "new" | "existing" | "something-else";
 
 type FormData = {
   projectType: ProjectType | "";
@@ -55,20 +48,12 @@ const initialForm: FormData = {
   phone: "",
 };
 
-const stages = [
-  "PROJECT",
-  "PACKAGE",
-  "BRIEF",
-  "DETAILS",
-  "CONTACT",
-];
+const stages = ["PROJECT", "PACKAGE", "BRIEF", "DETAILS", "CONTACT"];
 
 export default function ProjectInitialiser() {
-    
   const searchParams = useSearchParams();
 
-  const incomingPackage =
-    searchParams.get("package");
+  const incomingPackage = searchParams.get("package");
 
   const validIncomingPackage = useMemo(() => {
     if (
@@ -84,28 +69,21 @@ export default function ProjectInitialiser() {
 
   const [step, setStep] = useState(1);
 
-  const [formData, setFormData] =
-    useState<FormData>(initialForm);
+  const [formData, setFormData] = useState<FormData>(initialForm);
 
-  const [transmitting, setTransmitting] =
-    useState(false);
-const [displayStep, setDisplayStep] =
-  useState("01");
+  const [transmitting, setTransmitting] = useState(false);
+  const [displayStep, setDisplayStep] = useState("01");
 
-const [stageDirection, setStageDirection] =
-  useState<"forward" | "back">("forward");
+  const [stageDirection, setStageDirection] = useState<"forward" | "back">(
+    "forward",
+  );
 
-const [stageChanging, setStageChanging] =
-  useState(false);
+  const [stageChanging, setStageChanging] = useState(false);
 
-const scrambleTimer = useRef<number | null>(
-  null
-);
-  const [submitted, setSubmitted] =
-    useState(false);
+  const scrambleTimer = useRef<number | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const [transmitStage, setTransmitStage] =
-    useState(0);
+  const [transmitStage, setTransmitStage] = useState(0);
 
   useEffect(() => {
     if (!validIncomingPackage) {
@@ -117,127 +95,84 @@ const scrambleTimer = useRef<number | null>(
       package: validIncomingPackage,
     }));
   }, [validIncomingPackage]);
-useEffect(() => {
-  if (scrambleTimer.current) {
-    window.clearInterval(
-      scrambleTimer.current
-    );
-  }
+  useEffect(() => {
+    if (scrambleTimer.current) {
+      window.clearInterval(scrambleTimer.current);
+    }
 
-  const finalValue =
-    String(step).padStart(2, "0");
+    const finalValue = String(step).padStart(2, "0");
 
-  const characters = [
-    "03",
-    "08",
-    "14",
-    "21",
-    "--",
-    "07",
-    "11",
-    finalValue,
-  ];
+    const characters = ["03", "08", "14", "21", "--", "07", "11", finalValue];
 
-  let index = 0;
+    let index = 0;
 
-  scrambleTimer.current =
-    window.setInterval(() => {
-      setDisplayStep(
-        characters[index] ??
-          finalValue
-      );
+    scrambleTimer.current = window.setInterval(() => {
+      setDisplayStep(characters[index] ?? finalValue);
 
       index += 1;
 
-      if (
-        index >=
-        characters.length
-      ) {
-        if (
-          scrambleTimer.current
-        ) {
-          window.clearInterval(
-            scrambleTimer.current
-          );
+      if (index >= characters.length) {
+        if (scrambleTimer.current) {
+          window.clearInterval(scrambleTimer.current);
         }
 
-        setDisplayStep(
-          finalValue
-        );
+        setDisplayStep(finalValue);
       }
     }, 45);
 
-  return () => {
-    if (scrambleTimer.current) {
-      window.clearInterval(
-        scrambleTimer.current
-      );
-    }
-  };
-}, [step]);
-  function updateField<K extends keyof FormData>(
-    field: K,
-    value: FormData[K]
-  ) {
+    return () => {
+      if (scrambleTimer.current) {
+        window.clearInterval(scrambleTimer.current);
+      }
+    };
+  }, [step]);
+  function updateField<K extends keyof FormData>(field: K, value: FormData[K]) {
     setFormData((current) => ({
       ...current,
       [field]: value,
     }));
   }
 
-function changeStep(
-  next: number,
-  direction: "forward" | "back"
-) {
-  if (stageChanging) {
-    return;
-  }
+  function changeStep(next: number, direction: "forward" | "back") {
+    if (stageChanging) {
+      return;
+    }
 
-  setStageDirection(direction);
-  setStageChanging(true);
-
-  window.setTimeout(() => {
-    setStep(next);
+    setStageDirection(direction);
+    setStageChanging(true);
 
     window.setTimeout(() => {
-      setStageChanging(false);
-    }, 30);
-  }, 260);
-}
+      setStep(next);
 
-function nextStep() {
-  changeStep(
-    Math.min(step + 1, 5),
-    "forward"
-  );
-}
+      window.setTimeout(() => {
+        setStageChanging(false);
+      }, 30);
+    }, 260);
+  }
 
-function previousStep() {
-  changeStep(
-    Math.max(step - 1, 1),
-    "back"
-  );
-}
+  function nextStep() {
+    changeStep(Math.min(step + 1, 5), "forward");
+  }
 
-function handleProjectSelect(
-  value: ProjectType
-) {
-  updateField("projectType", value);
+  function previousStep() {
+    changeStep(Math.max(step - 1, 1), "back");
+  }
 
-  window.setTimeout(() => {
-    changeStep(2, "forward");
-  }, 420);
-}
+  function handleProjectSelect(value: ProjectType) {
+    updateField("projectType", value);
 
-function handlePackageSelect(
-  value: PackageOption
-) {
-  updateField("package", value);
+    window.setTimeout(() => {
+      changeStep(2, "forward");
+    }, 420);
+  }
 
-  window.setTimeout(() => {
-    changeStep(3, "forward");
-  }, 420);
-}
+  function handlePackageSelect(value: PackageOption) {
+    updateField("package", value);
+
+    window.setTimeout(() => {
+      changeStep(3, "forward");
+    }, 420);
+  }
 
   function canContinueBrief() {
     return (
@@ -248,10 +183,7 @@ function handlePackageSelect(
   }
 
   function canSubmit() {
-    return (
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== ""
-    );
+    return formData.name.trim() !== "" && formData.email.trim() !== "";
   }
 
   async function handleTransmit() {
@@ -262,22 +194,83 @@ function handlePackageSelect(
     setTransmitting(true);
     setTransmitStage(1);
 
-    await wait(700);
+    try {
+      await wait(600);
 
-    setTransmitStage(2);
+      setTransmitStage(2);
 
-    await wait(850);
+      const selectedDetails = [
+        formData.existingWebsite && "Already has a website",
+        formData.existingBranding && "Already has branding",
+        formData.needsBranding && "Needs help with branding",
+        formData.instalments && "Would like to discuss instalments",
+        formData.reducedRate && "Would like to ask about a reduced rate",
+      ].filter(Boolean);
 
-    setTransmitStage(3);
+      const payload = {
+        access_key: "4c47710e-8cde-47d0-a82e-cfbcc09180a0",
 
-    await wait(850);
+        subject: `New Periot Digital enquiry — ${
+          formData.businessName || formData.name
+        }`,
 
-    setTransmitStage(4);
+        name: formData.name,
+        email: formData.email,
 
-    await wait(650);
+        phone: formData.phone || "Not provided",
 
-    setTransmitting(false);
-    setSubmitted(true);
+        project_type: formData.projectType || "Not specified",
+
+        package: formData.package || "Not specified",
+
+        business_name: formData.businessName,
+
+        business_description: formData.businessDescription,
+
+        website_goal: formData.projectGoal,
+
+        project_details:
+          selectedDetails.length > 0
+            ? selectedDetails.join(", ")
+            : "None selected",
+
+        from_name: "Periot Digital Website",
+      };
+
+      setTransmitStage(3);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
+
+      setTransmitStage(4);
+
+      await wait(700);
+
+      setTransmitting(false);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      setTransmitting(false);
+
+      alert(
+        "Sorry — your enquiry could not be sent. Please try again or email contact@periotdigital.co.uk.",
+      );
+    }
   }
 
   if (submitted) {
@@ -285,49 +278,24 @@ function handlePackageSelect(
       <main className={styles.contact}>
         <SpaceBackground />
 
-        <Link
-          href="/enter"
-          className={styles.exit}
-        >
+        <Link href="/enter" className={styles.exit}>
           ◄ RETURN
         </Link>
 
-        <section
-          className={styles.success}
-        >
-          <div
-            className={styles.successCore}
-          >
-            <div
-              className={
-                styles.successCoreInner
-              }
-            />
+        <section className={styles.success}>
+          <div className={styles.successCore}>
+            <div className={styles.successCoreInner} />
           </div>
 
-          <p
-            className={styles.systemLabel}
-          >
-            TRANSMISSION COMPLETE
-          </p>
+          <p className={styles.systemLabel}>TRANSMISSION COMPLETE</p>
 
           <h1>ENQUIRY RECEIVED</h1>
 
-          <p>
-            Your project brief has entered
-            the system.
-          </p>
+          <p>Your project brief has entered the system.</p>
 
-          <span>
-            I&apos;ll be in touch soon.
-          </span>
+          <span>I&apos;ll be in touch soon.</span>
 
-          <Link
-            href="/enter"
-            className={
-              styles.successAction
-            }
-          >
+          <Link href="/enter" className={styles.successAction}>
             RETURN TO STUDIO →
           </Link>
         </section>
@@ -340,16 +308,11 @@ function handlePackageSelect(
       <main className={styles.contact}>
         <SpaceBackground />
 
-        <section
-          className={styles.transmission}
-        >
-          <div
-            className={styles.transmitCore}
-          />
+        <section className={styles.transmission}>
+          <div className={styles.transmitCore} />
 
           <p>
-            {transmitStage >= 1 &&
-              "ENCRYPTING PROJECT BRIEF..."}
+            {transmitStage >= 1 && "ENCRYPTING PROJECT BRIEF..."}
 
             {transmitStage >= 2 && (
               <>
@@ -381,166 +344,117 @@ function handlePackageSelect(
     <main className={styles.contact}>
       <SpaceBackground />
 
-      <Link
-        href="/enter"
-        className={styles.exit}
-      >
+      <Link href="/enter" className={styles.exit}>
         ◄ RETURN
       </Link>
 
-      <section
-        className={styles.interface}
-      >
-<header className={styles.header}>
-  <div className={styles.headingSystem}>
-    <p className={styles.systemLabel}>
-      PERIOT DIGITAL
-    </p>
+      <section className={styles.interface}>
+        <header className={styles.header}>
+          <div className={styles.headingSystem}>
+            <p className={styles.systemLabel}>PERIOT DIGITAL</p>
 
-    <div className={styles.headingAssembly}>
-      <div className={styles.headingLine}>
-        <span
-          className={`${styles.headingWord} ${styles.projectWord}`}
-          data-text="PROJECT"
-        >
-          PROJECT
-        </span>
+            <div className={styles.headingAssembly}>
+              <div className={styles.headingLine}>
+                <span
+                  className={`${styles.headingWord} ${styles.projectWord}`}
+                  data-text="PROJECT"
+                >
+                  PROJECT
+                </span>
 
-        <span
-          className={`${styles.headingGhost} ${styles.projectGhost}`}
-          aria-hidden="true"
-        >
-          PROJECT
-        </span>
-      </div>
+                <span
+                  className={`${styles.headingGhost} ${styles.projectGhost}`}
+                  aria-hidden="true"
+                >
+                  PROJECT
+                </span>
+              </div>
 
-      <div className={styles.headingLine}>
-        <span
-          className={`${styles.headingWord} ${styles.initialisationWord}`}
-          data-text="INITIALISATION"
-        >
-          INITIALISATION
-        </span>
+              <div className={styles.headingLine}>
+                <span
+                  className={`${styles.headingWord} ${styles.initialisationWord}`}
+                  data-text="INITIALISATION"
+                >
+                  INITIALISATION
+                </span>
 
-        <span
-          className={`${styles.headingGhost} ${styles.initialisationGhost}`}
-          aria-hidden="true"
-        >
-          INITIALISATION
-        </span>
-      </div>
+                <span
+                  className={`${styles.headingGhost} ${styles.initialisationGhost}`}
+                  aria-hidden="true"
+                >
+                  INITIALISATION
+                </span>
+              </div>
 
-      <div
-        className={styles.headingScanner}
-        aria-hidden="true"
-      />
+              <div className={styles.headingScanner} aria-hidden="true" />
 
-      <div
-        className={styles.coordinateMarker}
-        aria-hidden="true"
-      >
-        <span>+</span>
-        <small>X:074 / Y:221</small>
-      </div>
-    </div>
-  </div>
+              <div className={styles.coordinateMarker} aria-hidden="true">
+                <span>+</span>
+                <small>X:074 / Y:221</small>
+              </div>
+            </div>
+          </div>
 
-<div className={styles.stepReadout}>
-  <span>PROJECT /</span>
+          <div className={styles.stepReadout}>
+            <span>PROJECT /</span>
 
-  <strong
-    key={displayStep}
-    className={styles.scramblingNumber}
-  >
-    {displayStep}
-  </strong>
-</div>
-</header>
+            <strong key={displayStep} className={styles.scramblingNumber}>
+              {displayStep}
+            </strong>
+          </div>
+        </header>
+
+        <div className={styles.divider} />
+
+        <Progress currentStep={step} />
 
         <div
-          className={styles.divider}
-        />
-
-        <Progress
-          currentStep={step}
-        />
-
-    <div
-  key={step}
-  className={`${styles.stage} ${
-    stageChanging
-      ? stageDirection === "forward"
-        ? styles.stageExitLeft
-        : styles.stageExitRight
-      : stageDirection === "forward"
-        ? styles.stageEnterRight
-        : styles.stageEnterLeft
-  }`}
->
+          key={step}
+          className={`${styles.stage} ${
+            stageChanging
+              ? stageDirection === "forward"
+                ? styles.stageExitLeft
+                : styles.stageExitRight
+              : stageDirection === "forward"
+                ? styles.stageEnterRight
+                : styles.stageEnterLeft
+          }`}
+        >
           {step === 1 && (
             <ProjectStage
-              value={
-                formData.projectType
-              }
-              onSelect={
-                handleProjectSelect
-              }
+              value={formData.projectType}
+              onSelect={handleProjectSelect}
             />
           )}
 
           {step === 2 && (
             <PackageStage
-              value={
-                formData.package
-              }
-              onSelect={
-                handlePackageSelect
-              }
-              detectedPackage={
-                validIncomingPackage
-              }
+              value={formData.package}
+              onSelect={handlePackageSelect}
+              detectedPackage={validIncomingPackage}
             />
           )}
 
           {step === 3 && (
-            <BriefStage
-              formData={formData}
-              updateField={
-                updateField
-              }
-            />
+            <BriefStage formData={formData} updateField={updateField} />
           )}
 
           {step === 4 && (
-            <DetailsStage
-              formData={formData}
-              updateField={
-                updateField
-              }
-            />
+            <DetailsStage formData={formData} updateField={updateField} />
           )}
 
           {step === 5 && (
-            <ContactStage
-              formData={formData}
-              updateField={
-                updateField
-              }
-            />
+            <ContactStage formData={formData} updateField={updateField} />
           )}
         </div>
 
-        <footer
-          className={styles.controls}
-        >
+        <footer className={styles.controls}>
           <div>
             {step > 1 && (
               <button
                 type="button"
                 onClick={previousStep}
-                className={
-                  styles.backButton
-                }
+                className={styles.backButton}
               >
                 ← BACK
               </button>
@@ -551,13 +465,9 @@ function handlePackageSelect(
             {step === 3 && (
               <button
                 type="button"
-                disabled={
-                  !canContinueBrief()
-                }
+                disabled={!canContinueBrief()}
                 onClick={nextStep}
-                className={
-                  styles.nextButton
-                }
+                className={styles.nextButton}
               >
                 CONTINUE →
               </button>
@@ -567,9 +477,7 @@ function handlePackageSelect(
               <button
                 type="button"
                 onClick={nextStep}
-                className={
-                  styles.nextButton
-                }
+                className={styles.nextButton}
               >
                 CONTINUE →
               </button>
@@ -580,9 +488,7 @@ function handlePackageSelect(
                 type="button"
                 disabled={!canSubmit()}
                 onClick={handleTransmit}
-                className={
-                  styles.transmitButton
-                }
+                className={styles.transmitButton}
               >
                 TRANSMIT ENQUIRY →
               </button>
@@ -599,9 +505,7 @@ function ProjectStage({
   onSelect,
 }: {
   value: ProjectType | "";
-  onSelect: (
-    value: ProjectType
-  ) => void;
+  onSelect: (value: ProjectType) => void;
 }) {
   return (
     <>
@@ -611,41 +515,26 @@ function ProjectStage({
         description="Choose the option that best describes your project."
       />
 
-      <div
-        className={styles.choiceGrid}
-      >
+      <div className={styles.choiceGrid}>
         <Choice
           label="NEW WEBSITE"
           subLabel="Starting from scratch"
           selected={value === "new"}
-          onClick={() =>
-            onSelect("new")
-          }
+          onClick={() => onSelect("new")}
         />
 
         <Choice
           label="EXISTING WEBSITE"
           subLabel="Redesign or improvement"
-          selected={
-            value === "existing"
-          }
-          onClick={() =>
-            onSelect("existing")
-          }
+          selected={value === "existing"}
+          onClick={() => onSelect("existing")}
         />
 
         <Choice
           label="SOMETHING ELSE"
           subLabel="Tell me what you have in mind"
-          selected={
-            value ===
-            "something-else"
-          }
-          onClick={() =>
-            onSelect(
-              "something-else"
-            )
-          }
+          selected={value === "something-else"}
+          onClick={() => onSelect("something-else")}
         />
       </div>
     </>
@@ -658,9 +547,7 @@ function PackageStage({
   detectedPackage,
 }: {
   value: PackageOption | "";
-  onSelect: (
-    value: PackageOption
-  ) => void;
+  onSelect: (value: PackageOption) => void;
   detectedPackage: string;
 }) {
   return (
@@ -675,53 +562,33 @@ function PackageStage({
         }
       />
 
-      <div
-        className={
-          styles.packageChoices
-        }
-      >
+      <div className={styles.packageChoices}>
         <Choice
           label="ESSENTIAL"
           subLabel="From £299"
-          selected={
-            value === "essential"
-          }
-          onClick={() =>
-            onSelect("essential")
-          }
+          selected={value === "essential"}
+          onClick={() => onSelect("essential")}
         />
 
         <Choice
           label="ENHANCED"
           subLabel="From £699"
-          selected={
-            value === "enhanced"
-          }
-          onClick={() =>
-            onSelect("enhanced")
-          }
+          selected={value === "enhanced"}
+          onClick={() => onSelect("enhanced")}
         />
 
         <Choice
           label="SIGNATURE"
           subLabel="From £1500"
-          selected={
-            value === "signature"
-          }
-          onClick={() =>
-            onSelect("signature")
-          }
+          selected={value === "signature"}
+          onClick={() => onSelect("signature")}
         />
 
         <Choice
           label="NOT SURE"
           subLabel="We'll work it out together"
-          selected={
-            value === "not-sure"
-          }
-          onClick={() =>
-            onSelect("not-sure")
-          }
+          selected={value === "not-sure"}
+          onClick={() => onSelect("not-sure")}
         />
       </div>
     </>
@@ -733,12 +600,7 @@ function BriefStage({
   updateField,
 }: {
   formData: FormData;
-  updateField: <
-    K extends keyof FormData,
-  >(
-    field: K,
-    value: FormData[K]
-  ) => void;
+  updateField: <K extends keyof FormData>(field: K, value: FormData[K]) => void;
 }) {
   return (
     <>
@@ -748,48 +610,25 @@ function BriefStage({
         description="No need for a polished brief. Just give me enough to understand the idea."
       />
 
-      <div
-        className={styles.formStack}
-      >
+      <div className={styles.formStack}>
         <Field
           label="BUSINESS / PROJECT NAME"
-          value={
-            formData.businessName
-          }
-          onChange={(value) =>
-            updateField(
-              "businessName",
-              value
-            )
-          }
+          value={formData.businessName}
+          onChange={(value) => updateField("businessName", value)}
           placeholder="Your business or project"
         />
 
         <TextArea
           label="WHAT DOES YOUR BUSINESS DO?"
-          value={
-            formData.businessDescription
-          }
-          onChange={(value) =>
-            updateField(
-              "businessDescription",
-              value
-            )
-          }
+          value={formData.businessDescription}
+          onChange={(value) => updateField("businessDescription", value)}
           placeholder="Tell me a little about the business..."
         />
 
         <TextArea
           label="WHAT SHOULD THE WEBSITE ACHIEVE?"
-          value={
-            formData.projectGoal
-          }
-          onChange={(value) =>
-            updateField(
-              "projectGoal",
-              value
-            )
-          }
+          value={formData.projectGoal}
+          onChange={(value) => updateField("projectGoal", value)}
           placeholder="More enquiries, sell products, showcase your work..."
         />
       </div>
@@ -802,12 +641,7 @@ function DetailsStage({
   updateField,
 }: {
   formData: FormData;
-  updateField: <
-    K extends keyof FormData,
-  >(
-    field: K,
-    value: FormData[K]
-  ) => void;
+  updateField: <K extends keyof FormData>(field: K, value: FormData[K]) => void;
 }) {
   return (
     <>
@@ -817,86 +651,45 @@ function DetailsStage({
         description="Select anything relevant. None of these are required."
       />
 
-      <div
-        className={
-          styles.toggleGrid
-        }
-      >
+      <div className={styles.toggleGrid}>
         <ToggleChoice
           label="I ALREADY HAVE A WEBSITE"
-          selected={
-            formData.existingWebsite
-          }
+          selected={formData.existingWebsite}
           onClick={() =>
-            updateField(
-              "existingWebsite",
-              !formData.existingWebsite
-            )
+            updateField("existingWebsite", !formData.existingWebsite)
           }
         />
 
         <ToggleChoice
           label="I ALREADY HAVE BRANDING"
-          selected={
-            formData.existingBranding
-          }
+          selected={formData.existingBranding}
           onClick={() =>
-            updateField(
-              "existingBranding",
-              !formData.existingBranding
-            )
+            updateField("existingBranding", !formData.existingBranding)
           }
         />
 
         <ToggleChoice
           label="I NEED HELP WITH BRANDING"
-          selected={
-            formData.needsBranding
-          }
-          onClick={() =>
-            updateField(
-              "needsBranding",
-              !formData.needsBranding
-            )
-          }
+          selected={formData.needsBranding}
+          onClick={() => updateField("needsBranding", !formData.needsBranding)}
         />
 
         <ToggleChoice
           label="I'D LIKE TO DISCUSS INSTALMENTS"
-          selected={
-            formData.instalments
-          }
-          onClick={() =>
-            updateField(
-              "instalments",
-              !formData.instalments
-            )
-          }
+          selected={formData.instalments}
+          onClick={() => updateField("instalments", !formData.instalments)}
         />
 
         <ToggleChoice
           label="I'D LIKE TO ASK ABOUT A REDUCED RATE"
-          selected={
-            formData.reducedRate
-          }
-          onClick={() =>
-            updateField(
-              "reducedRate",
-              !formData.reducedRate
-            )
-          }
+          selected={formData.reducedRate}
+          onClick={() => updateField("reducedRate", !formData.reducedRate)}
         />
       </div>
 
-      <p
-        className={styles.supportNote}
-      >
-        Discounts may be available
-        for charities and people
-        facing exceptional
-        circumstances. Flexible
-        payment options may also be
-        available.
+      <p className={styles.supportNote}>
+        Discounts may be available for charities and people facing exceptional
+        circumstances. Flexible payment options may also be available.
       </p>
     </>
   );
@@ -907,12 +700,7 @@ function ContactStage({
   updateField,
 }: {
   formData: FormData;
-  updateField: <
-    K extends keyof FormData,
-  >(
-    field: K,
-    value: FormData[K]
-  ) => void;
+  updateField: <K extends keyof FormData>(field: K, value: FormData[K]) => void;
 }) {
   return (
     <>
@@ -922,18 +710,11 @@ function ContactStage({
         description="Just the essentials."
       />
 
-      <div
-        className={styles.formStack}
-      >
+      <div className={styles.formStack}>
         <Field
           label="YOUR NAME"
           value={formData.name}
-          onChange={(value) =>
-            updateField(
-              "name",
-              value
-            )
-          }
+          onChange={(value) => updateField("name", value)}
           placeholder="Name"
         />
 
@@ -941,24 +722,14 @@ function ContactStage({
           label="EMAIL"
           type="email"
           value={formData.email}
-          onChange={(value) =>
-            updateField(
-              "email",
-              value
-            )
-          }
+          onChange={(value) => updateField("email", value)}
           placeholder="you@example.com"
         />
 
         <Field
           label="PHONE / WHATSAPP"
           value={formData.phone}
-          onChange={(value) =>
-            updateField(
-              "phone",
-              value
-            )
-          }
+          onChange={(value) => updateField("phone", value)}
           placeholder="Optional"
         />
       </div>
@@ -976,9 +747,7 @@ function StageHeading({
   description: string;
 }) {
   return (
-    <div
-      className={styles.stageHeading}
-    >
+    <div className={styles.stageHeading}>
       <span>{number}</span>
 
       <div>
@@ -1005,21 +774,13 @@ function Choice({
     <button
       type="button"
       onClick={onClick}
-      className={`${styles.choice} ${
-        selected
-          ? styles.choiceSelected
-          : ""
-      }`}
+      className={`${styles.choice} ${selected ? styles.choiceSelected : ""}`}
     >
       <span>{label}</span>
 
       <small>{subLabel}</small>
 
-      <div
-        className={
-          styles.choiceCorner
-        }
-      />
+      <div className={styles.choiceCorner} />
     </button>
   );
 }
@@ -1038,16 +799,10 @@ function ToggleChoice({
       type="button"
       onClick={onClick}
       className={`${styles.toggleChoice} ${
-        selected
-          ? styles.toggleSelected
-          : ""
+        selected ? styles.toggleSelected : ""
       }`}
     >
-      <span
-        className={styles.toggleBox}
-      >
-        {selected ? "✓" : ""}
-      </span>
+      <span className={styles.toggleBox}>{selected ? "✓" : ""}</span>
 
       <span>{label}</span>
     </button>
@@ -1063,27 +818,19 @@ function Field({
 }: {
   label: string;
   value: string;
-  onChange: (
-    value: string
-  ) => void;
+  onChange: (value: string) => void;
   placeholder: string;
   type?: string;
 }) {
   return (
-    <label
-      className={styles.field}
-    >
+    <label className={styles.field}>
       <span>{label}</span>
 
       <input
         type={type}
         value={value}
         placeholder={placeholder}
-        onChange={(event) =>
-          onChange(
-            event.target.value
-          )
-        }
+        onChange={(event) => onChange(event.target.value)}
       />
     </label>
   );
@@ -1097,106 +844,62 @@ function TextArea({
 }: {
   label: string;
   value: string;
-  onChange: (
-    value: string
-  ) => void;
+  onChange: (value: string) => void;
   placeholder: string;
 }) {
   return (
-    <label
-      className={styles.field}
-    >
+    <label className={styles.field}>
       <span>{label}</span>
 
       <textarea
         value={value}
         placeholder={placeholder}
-        onChange={(event) =>
-          onChange(
-            event.target.value
-          )
-        }
+        onChange={(event) => onChange(event.target.value)}
       />
     </label>
   );
 }
 
-function Progress({
-  currentStep,
-}: {
-  currentStep: number;
-}) {
+function Progress({ currentStep }: { currentStep: number }) {
   return (
-    <div
-      className={styles.progress}
-    >
-      {stages.map(
-        (stage, index) => {
-          const stageNumber =
-            index + 1;
+    <div className={styles.progress}>
+      {stages.map((stage, index) => {
+        const stageNumber = index + 1;
 
-          return (
+        return (
+          <div key={stage} className={styles.progressItem}>
             <div
-              key={stage}
-              className={
-                styles.progressItem
-              }
-            >
-              <div
-                className={`${styles.progressDot} ${
-                  stageNumber <=
-                  currentStep
-                    ? styles.progressActive
-                    : ""
-                }`}
-              />
+              className={`${styles.progressDot} ${
+                stageNumber <= currentStep ? styles.progressActive : ""
+              }`}
+            />
 
-              <span>{stage}</span>
-            </div>
-          );
-        }
-      )}
+            <span>{stage}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 function SpaceBackground() {
   return (
-    <div
-      className={styles.background}
-      aria-hidden="true"
-    >
-      <div
-        className={styles.stars}
-      />
+    <div className={styles.background} aria-hidden="true">
+      <div className={styles.stars} />
 
-      <div
-        className={
-          styles.nebula
-        }
-      />
+      <div className={styles.nebula} />
 
-      <div
-        className={
-          styles.gridGlow
-        }
-      />
+      <div className={styles.gridGlow} />
 
-      <span
-        className={`${styles.debris} ${styles.debrisOne}`}
-      >
+      <span className={`${styles.debris} ${styles.debrisOne}`}>
         SYSTEM / READY
       </span>
 
-      <span
-        className={`${styles.debris} ${styles.debrisTwo}`}
-      >
+      <span className={`${styles.debris} ${styles.debrisTwo}`}>
         PROJECT / INPUT
       </span>
 
-      <span
-        className={`${styles.debris} ${styles.debrisThree}`}
-      >
+      <span className={`${styles.debris} ${styles.debrisThree}`}>
         CONNECTION / ACTIVE
       </span>
     </div>
@@ -1204,12 +907,7 @@ function SpaceBackground() {
 }
 
 function wait(ms: number) {
-  return new Promise<void>(
-    (resolve) => {
-      window.setTimeout(
-        resolve,
-        ms
-      );
-    }
-  );
+  return new Promise<void>((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
 }
