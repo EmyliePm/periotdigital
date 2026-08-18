@@ -70,10 +70,10 @@ const packageData = {
     tagline:
       "A richer, more expressive website designed to help your business stand out.",
 
-    exampleName: "PERIOT REWORKED",
-    exampleBusiness: "Periot Reworked",
+    exampleName: "Craftworkz Enhanced",
+    exampleBusiness: "Craftworkz",
 
-    viewerImage: "/images/sites/reworked.jpg",
+    viewerImage: "/images/sites/enhanced.jpg",
     url: "#",
 
     included: [
