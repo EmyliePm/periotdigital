@@ -16,6 +16,7 @@ export type PackageData = {
 
   exampleName: string;
   exampleBusiness: string;
+  exampleStatus?: string;
 
   viewerImage?: string;
   url?: string;
@@ -72,9 +73,10 @@ const packageData = {
 
     exampleName: "Craftworkz Enhanced",
     exampleBusiness: "Craftworkz",
+    exampleStatus: "CONCEPT BUILD · WORK IN PROGRESS",
 
     viewerImage: "/images/sites/enhanced.jpg",
-    url: "#",
+    url: "https://craftworkzenhanced.netlify.app/",
 
     included: [
       "Everything in Essential",

@@ -77,7 +77,7 @@ export default function ProjectViewer({
 
         <div className={styles.exampleMeta}>
           <div>
-            <span>LIVE EXAMPLE</span>
+            <span>{packageData.exampleStatus ?? "LIVE EXAMPLE"}</span>
 
             <strong>{packageData.exampleName}</strong>
           </div>
@@ -126,38 +126,35 @@ export default function ProjectViewer({
         </div>
 
         <div className={styles.flexibilityNote}>
-  <p>
-    Flexible options available.
-  </p>
+          <p>Flexible options available.</p>
 
-  <span>
-    Discounts may be available for charities and people facing exceptional
-    circumstances, including single parents starting a business.
-    We may also offer finance options such as 3 monthly instalments.
-    Enquire to discuss what works for you.
-  </span>
-</div>
+          <span>
+            Discounts may be available for charities and people facing
+            exceptional circumstances, including single parents starting a
+            business. We may also offer finance options such as 3 monthly
+            instalments. Enquire to discuss what works for you.
+          </span>
+        </div>
 
-      <div className={styles.actions}>
-  {packageData.url &&
-    packageData.url !== "#" && (
-      <a
-        href={packageData.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.primaryAction}
-      >
-        LAUNCH EXAMPLE ↗
-      </a>
-    )}
+        <div className={styles.actions}>
+          {packageData.url && packageData.url !== "#" && (
+            <a
+              href={packageData.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.primaryAction}
+            >
+              LAUNCH EXAMPLE ↗
+            </a>
+          )}
 
-<Link
-  href={`/contact?package=${packageData.name.toLowerCase()}`}
-  className={styles.secondaryAction}
->
-  MAKE AN ENQUIRY →
-</Link>
-</div>
+          <Link
+            href={`/contact?package=${packageData.name.toLowerCase()}`}
+            className={styles.secondaryAction}
+          >
+            MAKE AN ENQUIRY →
+          </Link>
+        </div>
 
         <p className={styles.escapeHint}>ESC TO RETURN</p>
       </div>
