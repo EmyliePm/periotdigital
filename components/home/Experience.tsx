@@ -69,7 +69,7 @@ const packageData = {
     carePrice: "£35",
 
     tagline:
-      "A richer, more expressive website designed to help your business stand out.",
+      "A richer, more expressive website designed to help your business stand out. Example is a work in progress",
 
     exampleName: "Craftworkz Enhanced",
     exampleBusiness: "Craftworkz",
