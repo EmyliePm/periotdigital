@@ -32,7 +32,7 @@ const packageData = {
     id: "01",
     name: "ESSENTIAL",
     price: "£299",
-    carePrice: "£20",
+    carePrice: "£25",
 
     tagline: "Everything you need to establish a professional online presence.",
 
@@ -65,8 +65,8 @@ const packageData = {
   enhanced: {
     id: "02",
     name: "ENHANCED",
-    price: "£699",
-    carePrice: "£35",
+    price: "£599",
+    carePrice: "£50",
 
     tagline:
       "A richer, more expressive website designed to help your business stand out. Example is a work in progress",
