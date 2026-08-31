@@ -507,6 +507,14 @@ function ProjectStage({
   value: ProjectType | "";
   onSelect: (value: ProjectType) => void;
 }) {
+  const whatsappNumber = "447795616533";
+
+  const whatsappMessage = encodeURIComponent(
+    "Hi, I found Periot Digital and I'd like to discuss a website.",
+  );
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
   return (
     <>
       <StageHeading
@@ -536,6 +544,31 @@ function ProjectStage({
           selected={value === "something-else"}
           onClick={() => onSelect("something-else")}
         />
+      </div>
+
+      <div className={styles.whatsappContact}>
+        <div className={styles.whatsappLine} />
+
+        <div className={styles.whatsappContent}>
+          <div>
+            <span className={styles.whatsappLabel}>
+              PREFER TO TALK DIRECTLY?
+            </span>
+
+            <p>Skip the form and start a conversation on WhatsApp.</p>
+          </div>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.whatsappButton}
+          >
+            <span className={styles.whatsappStatus} />
+            OPEN WHATSAPP
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </>
   );
