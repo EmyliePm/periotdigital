@@ -261,6 +261,30 @@ export default function Experience() {
           <div className={styles.circleOne} />
           <div className={styles.cornerOne}>⌜</div>
         </div>
+        <section className={styles.packageIntro}>
+          <div className={styles.packageIntroHeading}>
+            <span className={styles.packageIntroLabel}>
+              PERIOT / WEB DESIGN
+            </span>
+
+            <h1>
+              UK WEBSITE DESIGN
+              <br />
+              FOR BUSINESSES
+            </h1>
+          </div>
+
+          <div className={styles.packageIntroCopy}>
+            <p>
+              Affordable, modern websites for small businesses, organisations
+              and independent brands across the UK — designed and developed by
+              Periot Digital in West Yorkshire.
+            </p>
+
+            <span>SELECT A WEBSITE PACKAGE ↓</span>
+          </div>
+        </section>
+
         <div className={styles.packageGrid}>
           <ProjectHologram
             packageData={packageData.essential}

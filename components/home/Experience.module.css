@@ -9,7 +9,6 @@
   color: white;
 }
 
-
 /* =========================
    EXIT BUTTON
 ========================= */
@@ -29,13 +28,11 @@
 
   padding: 10px 16px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 8px;
 
-  background:
-    rgba(5, 5, 8, 0.45);
+  background: rgba(5, 5, 8, 0.45);
 
   backdrop-filter: blur(10px);
 
@@ -45,17 +42,13 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
 
-  color:
-    rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.45);
 
   text-decoration: none;
 
   opacity: 0;
 
-  animation:
-    exitReveal 0.8s
-    6.8s
-    forwards;
+  animation: exitReveal 0.8s 6.8s forwards;
 
   transition:
     color 0.25s ease,
@@ -68,20 +61,15 @@
 .exit:hover {
   color: #5bffb6;
 
-  border-color:
-    rgba(91, 255, 182, 0.5);
+  border-color: rgba(91, 255, 182, 0.5);
 
-  background:
-    rgba(10, 15, 12, 0.6);
+  background: rgba(10, 15, 12, 0.6);
 
   box-shadow:
-    0 0 12px
-      rgba(91, 255, 182, 0.28),
-    0 0 28px
-      rgba(91, 255, 182, 0.1);
+    0 0 12px rgba(91, 255, 182, 0.28),
+    0 0 28px rgba(91, 255, 182, 0.1);
 
-  transform:
-    translateX(-2px);
+  transform: translateX(-2px);
 }
 
 @keyframes exitReveal {
@@ -89,7 +77,6 @@
     opacity: 1;
   }
 }
-
 
 /* =========================
    DEEP SPACE
@@ -105,14 +92,9 @@
   overflow: hidden;
 
   background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(10, 12, 18, 0.5),
-      transparent 60%
-    ),
+    radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.5), transparent 60%),
     #000;
 }
-
 
 /* =========================
    STARS
@@ -227,38 +209,29 @@
       transparent 1.4px
     );
 
-  animation:
-    starsReveal 1.8s
-    6.25s
-    forwards;
+  animation: starsReveal 1.8s 6.25s forwards;
 
-  transform:
-    translate(
-      calc(var(--mouse-x, 0) * -3px),
-      calc(var(--mouse-y, 0) * -3px)
-    );
+  transform: translate(
+    calc(var(--mouse-x, 0) * -3px),
+    calc(var(--mouse-y, 0) * -3px)
+  );
 
-  transition:
-    transform 0.8s
-    cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes starsReveal {
   from {
     opacity: 0;
 
-    filter:
-      blur(3px);
+    filter: blur(3px);
   }
 
   to {
     opacity: 0.6;
 
-    filter:
-      blur(0);
+    filter: blur(0);
   }
 }
-
 
 /* =========================
    BRIGHT ACCENT STARS
@@ -272,57 +245,25 @@
   opacity: 0;
 
   background-image:
-    radial-gradient(
-      circle at 26% 54%,
-      #4ea1ff 0 1.2px,
-      transparent 2.2px
-    ),
-    radial-gradient(
-      circle at 63% 18%,
-      #ffffff 0 1.1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 81% 35%,
-      #b76cff 0 1.2px,
-      transparent 2.2px
-    ),
-    radial-gradient(
-      circle at 72% 72%,
-      #5bffb6 0 1.1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 14% 79%,
-      #6d7cff 0 1.2px,
-      transparent 2.2px
-    );
+    radial-gradient(circle at 26% 54%, #4ea1ff 0 1.2px, transparent 2.2px),
+    radial-gradient(circle at 63% 18%, #ffffff 0 1.1px, transparent 2px),
+    radial-gradient(circle at 81% 35%, #b76cff 0 1.2px, transparent 2.2px),
+    radial-gradient(circle at 72% 72%, #5bffb6 0 1.1px, transparent 2px),
+    radial-gradient(circle at 14% 79%, #6d7cff 0 1.2px, transparent 2.2px);
 
-  filter:
-    drop-shadow(
-      0 0 4px
-      rgba(255, 255, 255, 0.6)
-    )
-    drop-shadow(
-      0 0 10px
-      rgba(90, 130, 255, 0.45)
-    );
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 10px rgba(90, 130, 255, 0.45));
 
   animation:
-    brightStarsReveal 2s
-      6.8s forwards,
-    brightStarsTwinkle 4.5s
-      8.5s ease-in-out infinite;
+    brightStarsReveal 2s 6.8s forwards,
+    brightStarsTwinkle 4.5s 8.5s ease-in-out infinite;
 
-  transform:
-    translate(
-      calc(var(--mouse-x, 0) * -5px),
-      calc(var(--mouse-y, 0) * -5px)
-    );
+  transform: translate(
+    calc(var(--mouse-x, 0) * -5px),
+    calc(var(--mouse-y, 0) * -5px)
+  );
 
-  transition:
-    transform 0.8s
-    cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes brightStarsReveal {
@@ -342,7 +283,6 @@
   }
 }
 
-
 /* =========================
    NEBULA
 ========================= */
@@ -358,28 +298,21 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(71, 82, 220, 0.12) 0%,
-      rgba(91, 48, 180, 0.075) 30%,
-      rgba(20, 92, 160, 0.045) 52%,
-      transparent 72%
-    );
+  background: radial-gradient(
+    ellipse,
+    rgba(71, 82, 220, 0.12) 0%,
+    rgba(91, 48, 180, 0.075) 30%,
+    rgba(20, 92, 160, 0.045) 52%,
+    transparent 72%
+  );
 
-  filter:
-    blur(120px);
+  filter: blur(120px);
 
   opacity: 0;
 
-  transform:
-    translate(-50%, -50%)
-    rotate(-12deg);
+  transform: translate(-50%, -50%) rotate(-12deg);
 
-  animation:
-    nebulaReveal 2.8s
-    6.6s
-    forwards;
+  animation: nebulaReveal 2.8s 6.6s forwards;
 }
 
 .nebulaSecondary {
@@ -393,26 +326,20 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 210, 255, 0.055),
-      rgba(91, 255, 182, 0.025) 35%,
-      transparent 70%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(0, 210, 255, 0.055),
+    rgba(91, 255, 182, 0.025) 35%,
+    transparent 70%
+  );
 
-  filter:
-    blur(130px);
+  filter: blur(130px);
 
   opacity: 0;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-  animation:
-    nebulaSecondaryReveal 3s
-    7s
-    forwards;
+  animation: nebulaSecondaryReveal 3s 7s forwards;
 }
 
 @keyframes nebulaReveal {
@@ -426,7 +353,6 @@
     opacity: 1;
   }
 }
-
 
 /* =========================
    BOOT SEQUENCE
@@ -468,10 +394,8 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color:
-    rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.72);
 }
-
 
 /* Message 1 */
 
@@ -482,12 +406,9 @@
   margin-bottom: 10vh;
 
   animation:
-    bootReveal 0.8s
-      0.3s forwards,
-    bootHide 0.5s
-      1.9s forwards;
+    bootReveal 0.8s 0.3s forwards,
+    bootHide 0.5s 1.9s forwards;
 }
-
 
 /* Message 2 */
 
@@ -497,12 +418,9 @@
   margin-bottom: 12vh;
 
   animation:
-    bootReveal 0.8s
-      2.2s forwards,
-    bootHide 0.5s
-      3.8s forwards;
+    bootReveal 0.8s 2.2s forwards,
+    bootHide 0.5s 3.8s forwards;
 }
-
 
 /* Final success message */
 
@@ -520,31 +438,25 @@
   color: #5bffb6;
 
   text-shadow:
-    0 0 10px
-      rgba(91, 255, 182, 0.9),
-    0 0 40px
-      rgba(91, 255, 182, 0.45);
+    0 0 10px rgba(91, 255, 182, 0.9),
+    0 0 40px rgba(91, 255, 182, 0.45);
 
   animation:
-    bootReveal 0.7s
-      4.1s forwards,
-    bootHide 0.6s
-      5.4s forwards;
+    bootReveal 0.7s 4.1s forwards,
+    bootHide 0.6s 5.4s forwards;
 }
 
 @keyframes bootReveal {
   from {
     opacity: 0;
 
-    transform:
-      translateY(8px);
+    transform: translateY(8px);
   }
 
   to {
     opacity: 1;
 
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -552,11 +464,9 @@
   to {
     opacity: 0;
 
-    transform:
-      translateY(-8px);
+    transform: translateY(-8px);
   }
 }
-
 
 /* =========================
    LOADING DOTS
@@ -573,19 +483,15 @@
 .loading span {
   opacity: 0;
 
-  animation:
-    blink 1.2s
-    infinite;
+  animation: blink 1.2s infinite;
 }
 
 .loading span:nth-child(2) {
-  animation-delay:
-    0.2s;
+  animation-delay: 0.2s;
 }
 
 .loading span:nth-child(3) {
-  animation-delay:
-    0.4s;
+  animation-delay: 0.4s;
 }
 
 @keyframes blink {
@@ -603,7 +509,6 @@
     opacity: 0;
   }
 }
-
 
 /* =========================
    DIGITAL BIG BANG
@@ -640,10 +545,7 @@
     0 0 60px #6d4cff,
     0 0 120px #00c8ff;
 
-  animation:
-    bigBang 1.6s
-    5.8s
-    forwards;
+  animation: bigBang 1.6s 5.8s forwards;
 }
 
 .ring::after {
@@ -653,8 +555,7 @@
 
   inset: -4px;
 
-  border:
-    2px solid #7c5cff;
+  border: 2px solid #7c5cff;
 
   border-radius: 50%;
 
@@ -665,25 +566,21 @@
   0% {
     opacity: 0;
 
-    transform:
-      scale(0.2);
+    transform: scale(0.2);
   }
 
   10% {
     opacity: 1;
 
-    transform:
-      scale(1);
+    transform: scale(1);
   }
 
   100% {
     opacity: 0;
 
-    transform:
-      scale(260);
+    transform: scale(260);
   }
 }
-
 
 /* =========================
    WORKSPACE
@@ -698,31 +595,24 @@
 
   opacity: 0;
 
-  filter:
-    blur(12px);
+  filter: blur(12px);
 
-  animation:
-    workspaceReveal 1.2s
-    6.8s
-    forwards;
+  animation: workspaceReveal 1.2s 6.8s forwards;
 }
 
 @keyframes workspaceReveal {
   from {
     opacity: 0;
 
-    filter:
-      blur(12px);
+    filter: blur(12px);
   }
 
   to {
     opacity: 1;
 
-    filter:
-      blur(0);
+    filter: blur(0);
   }
 }
-
 
 /* =========================
    PACKAGE GRID
@@ -739,14 +629,83 @@
 
   display: grid;
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   align-items: start;
 
   gap: 3vw;
 }
+/* =========================================================
+   PACKAGE INTRO
+   ========================================================= */
 
+.packageIntro {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(500px, 1.1fr);
+  align-items: start;
+  gap: clamp(60px, 9vw, 160px);
+
+  margin-top: 78px;
+  margin-bottom: 24px;
+
+  padding: 0 34px 22px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.packageIntroHeading {
+  min-width: 0;
+}
+
+.packageIntroLabel {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: rgba(91, 255, 182, 0.72);
+
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.packageIntro h1 {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  font-size: clamp(1.45rem, 1.8vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.05em;
+}
+
+.packageIntroCopy {
+  max-width: 720px;
+  padding-top: 28px;
+}
+
+.packageIntroCopy p {
+  margin: 0 0 15px;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: clamp(1rem, 1.05vw, 1.15rem);
+  line-height: 1.65;
+  letter-spacing: 0.025em;
+}
+
+.packageIntroCopy > span {
+  color: rgba(78, 161, 255, 0.78);
+
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 
 /* =========================
    MAIN DEBRIS LAYER
@@ -761,15 +720,12 @@
 
   pointer-events: none;
 
-  transform:
-    translate(
-      calc(var(--mouse-x, 0) * -12px),
-      calc(var(--mouse-y, 0) * -12px)
-    );
+  transform: translate(
+    calc(var(--mouse-x, 0) * -12px),
+    calc(var(--mouse-y, 0) * -12px)
+  );
 
-  transition:
-    transform 0.22s
-    ease-out;
+  transition: transform 0.22s ease-out;
 }
 
 .fragment,
@@ -780,15 +736,13 @@
 
   animation:
     debrisReveal 1.4s forwards,
-    debrisFloat 8s ease-in-out
-      infinite alternate;
+    debrisFloat 8s ease-in-out infinite alternate;
 
   will-change: transform;
 }
 
 .fragment {
-  font-family:
-    var(--font-body);
+  font-family: var(--font-body);
 
   font-size: 0.58rem;
   font-weight: 500;
@@ -796,16 +750,12 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 
-  color:
-    rgba(255, 255, 255, 0.34);
+  color: rgba(255, 255, 255, 0.34);
 
   text-shadow:
-    0 0 6px
-      rgba(255, 255, 255, 0.12),
-    0 0 16px
-      rgba(90, 130, 255, 0.08);
+    0 0 6px rgba(255, 255, 255, 0.12),
+    0 0 16px rgba(90, 130, 255, 0.08);
 }
-
 
 /* Debris positions */
 
@@ -813,9 +763,7 @@
   top: 30%;
   left: 24%;
 
-  animation-delay:
-    7.2s,
-    8.6s;
+  animation-delay: 7.2s, 8.6s;
 }
 
 .fragmentTwo {
@@ -825,25 +773,18 @@
   color: #b76cff;
 
   text-shadow:
-    0 0 5px
-      rgba(183, 108, 255, 0.9),
-    0 0 14px
-      rgba(183, 108, 255, 0.5),
-    0 0 30px
-      rgba(183, 108, 255, 0.18);
+    0 0 5px rgba(183, 108, 255, 0.9),
+    0 0 14px rgba(183, 108, 255, 0.5),
+    0 0 30px rgba(183, 108, 255, 0.18);
 
-  animation-delay:
-    7.5s,
-    9s;
+  animation-delay: 7.5s, 9s;
 }
 
 .fragmentThree {
   top: 40%;
   left: 19%;
 
-  animation-delay:
-    7.8s,
-    9.4s;
+  animation-delay: 7.8s, 9.4s;
 }
 
 .fragmentFour {
@@ -853,25 +794,18 @@
   color: #4ea1ff;
 
   text-shadow:
-    0 0 5px
-      rgba(78, 161, 255, 0.9),
-    0 0 14px
-      rgba(78, 161, 255, 0.48),
-    0 0 30px
-      rgba(78, 161, 255, 0.16);
+    0 0 5px rgba(78, 161, 255, 0.9),
+    0 0 14px rgba(78, 161, 255, 0.48),
+    0 0 30px rgba(78, 161, 255, 0.16);
 
-  animation-delay:
-    8s,
-    9.6s;
+  animation-delay: 8s, 9.6s;
 }
 
 .fragmentFive {
   bottom: 17%;
   left: 6%;
 
-  animation-delay:
-    8.3s,
-    9.9s;
+  animation-delay: 8.3s, 9.9s;
 }
 
 .fragmentSix {
@@ -881,36 +815,26 @@
   color: #5bffb6;
 
   text-shadow:
-    0 0 5px
-      rgba(91, 255, 182, 0.9),
-    0 0 14px
-      rgba(91, 255, 182, 0.45),
-    0 0 30px
-      rgba(91, 255, 182, 0.15);
+    0 0 5px rgba(91, 255, 182, 0.9),
+    0 0 14px rgba(91, 255, 182, 0.45),
+    0 0 30px rgba(91, 255, 182, 0.15);
 
-  animation-delay:
-    8.5s,
-    10.2s;
+  animation-delay: 8.5s, 10.2s;
 }
 
 .fragmentSeven {
   top: 31%;
   left: 49%;
 
-  animation-delay:
-    8.7s,
-    10.5s;
+  animation-delay: 8.7s, 10.5s;
 }
 
 .fragmentEight {
   top: 72%;
   right: 6%;
 
-  animation-delay:
-    8.9s,
-    10.8s;
+  animation-delay: 8.9s, 10.8s;
 }
-
 
 /* =========================
    GEOMETRIC DEBRIS
@@ -920,14 +844,11 @@
   width: 56px;
   height: 56px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 
   box-shadow:
-    inset 0 0 18px
-      rgba(255, 255, 255, 0.025),
-    0 0 12px
-      rgba(80, 120, 255, 0.06);
+    inset 0 0 18px rgba(255, 255, 255, 0.025),
+    0 0 12px rgba(80, 120, 255, 0.06);
 }
 
 .shapeOne {
@@ -937,18 +858,13 @@
   width: 38px;
   height: 38px;
 
-  border-color:
-    rgba(78, 161, 255, 0.32);
+  border-color: rgba(78, 161, 255, 0.32);
 
   box-shadow:
-    0 0 10px
-      rgba(78, 161, 255, 0.18),
-    inset 0 0 12px
-      rgba(78, 161, 255, 0.04);
+    0 0 10px rgba(78, 161, 255, 0.18),
+    inset 0 0 12px rgba(78, 161, 255, 0.04);
 
-  animation-delay:
-    7.6s,
-    9.1s;
+  animation-delay: 7.6s, 9.1s;
 }
 
 .shapeTwo {
@@ -958,18 +874,13 @@
   width: 72px;
   height: 26px;
 
-  border-color:
-    rgba(168, 85, 247, 0.28);
+  border-color: rgba(168, 85, 247, 0.28);
 
   box-shadow:
-    0 0 10px
-      rgba(168, 85, 247, 0.16),
-    inset 0 0 12px
-      rgba(168, 85, 247, 0.04);
+    0 0 10px rgba(168, 85, 247, 0.16),
+    inset 0 0 12px rgba(168, 85, 247, 0.04);
 
-  animation-delay:
-    8.1s,
-    9.7s;
+  animation-delay: 8.1s, 9.7s;
 }
 
 .shapeThree {
@@ -979,56 +890,38 @@
   width: 22px;
   height: 92px;
 
-  border-color:
-    rgba(91, 255, 182, 0.3);
+  border-color: rgba(91, 255, 182, 0.3);
 
   box-shadow:
-    0 0 10px
-      rgba(91, 255, 182, 0.16),
-    inset 0 0 12px
-      rgba(91, 255, 182, 0.04);
+    0 0 10px rgba(91, 255, 182, 0.16),
+    inset 0 0 12px rgba(91, 255, 182, 0.04);
 
-  animation-delay:
-    8.5s,
-    10.1s;
+  animation-delay: 8.5s, 10.1s;
 }
 
 @keyframes debrisReveal {
   from {
     opacity: 0;
 
-    filter:
-      blur(8px);
+    filter: blur(8px);
   }
 
   to {
     opacity: 1;
 
-    filter:
-      blur(0);
+    filter: blur(0);
   }
 }
 
 @keyframes debrisFloat {
   from {
-    transform:
-      translate3d(
-        -4px,
-        -3px,
-        0
-      );
+    transform: translate3d(-4px, -3px, 0);
   }
 
   to {
-    transform:
-      translate3d(
-        6px,
-        5px,
-        0
-      );
+    transform: translate3d(6px, 5px, 0);
   }
 }
-
 
 /* =========================
    FAR DEBRIS LAYER
@@ -1045,23 +938,16 @@
 
   opacity: 0;
 
-  filter:
-    blur(0.7px);
+  filter: blur(0.7px);
 
-  animation:
-    farLayerReveal 2s
-    7.6s
-    forwards;
+  animation: farLayerReveal 2s 7.6s forwards;
 
-  transform:
-    translate(
-      calc(var(--mouse-x, 0) * -7px),
-      calc(var(--mouse-y, 0) * -7px)
-    );
+  transform: translate(
+    calc(var(--mouse-x, 0) * -7px),
+    calc(var(--mouse-y, 0) * -7px)
+  );
 
-  transition:
-    transform 0.3s
-    ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .debrisFar span,
@@ -1074,8 +960,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
 
-  color:
-    rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.16);
 }
 
 .farOne {
@@ -1103,37 +988,28 @@
   bottom: 8%;
 }
 
-
 /* Far geometry */
 
 .crossOne {
   top: 18%;
   left: 72%;
 
-  color:
-    rgba(78, 161, 255, 0.28) !important;
+  color: rgba(78, 161, 255, 0.28) !important;
 
-  font-size:
-    0.9rem !important;
+  font-size: 0.9rem !important;
 
-  text-shadow:
-    0 0 8px
-    rgba(78, 161, 255, 0.3);
+  text-shadow: 0 0 8px rgba(78, 161, 255, 0.3);
 }
 
 .crossTwo {
   bottom: 24%;
   left: 22%;
 
-  color:
-    rgba(168, 85, 247, 0.24) !important;
+  color: rgba(168, 85, 247, 0.24) !important;
 
-  font-size:
-    0.8rem !important;
+  font-size: 0.8rem !important;
 
-  text-shadow:
-    0 0 8px
-    rgba(168, 85, 247, 0.28);
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.28);
 }
 
 .circleOne {
@@ -1143,25 +1019,20 @@
   width: 18px;
   height: 18px;
 
-  border:
-    1px solid rgba(91, 255, 182, 0.25);
+  border: 1px solid rgba(91, 255, 182, 0.25);
 
   border-radius: 50%;
 
-  box-shadow:
-    0 0 10px
-    rgba(91, 255, 182, 0.14);
+  box-shadow: 0 0 10px rgba(91, 255, 182, 0.14);
 }
 
 .cornerOne {
   top: 35%;
   left: 46%;
 
-  color:
-    rgba(255, 255, 255, 0.13) !important;
+  color: rgba(255, 255, 255, 0.13) !important;
 
-  font-size:
-    1rem !important;
+  font-size: 1rem !important;
 }
 
 @keyframes farLayerReveal {
@@ -1173,7 +1044,6 @@
     opacity: 0.42;
   }
 }
-
 
 /* =========================
    TABLET / MOBILE
@@ -1197,7 +1067,6 @@
     padding-bottom: 140px;
   }
 
-
   /* =========================
      PACKAGE STACK
   ========================= */
@@ -1217,12 +1086,8 @@
 
     gap: 84px;
 
-    padding:
-      120px
-      18px
-      80px;
+    padding: 120px 18px 80px;
   }
-
 
   /* =========================
      EXIT
@@ -1232,9 +1097,7 @@
     top: 12px;
     left: 10px;
 
-    padding:
-      8px
-      12px;
+    padding: 8px 12px;
 
     font-size: 0.58rem;
 
@@ -1244,7 +1107,6 @@
   .exit:hover {
     transform: none;
   }
-
 
   /* =========================
      BOOT
@@ -1264,9 +1126,7 @@
   .bootText:nth-child(2) {
     margin-bottom: 10vh;
 
-    padding:
-      0
-      22px;
+    padding: 0 22px;
 
     text-align: center;
   }
@@ -1281,7 +1141,6 @@
 
     text-align: center;
   }
-
 
   /* =========================
      DEBRIS
@@ -1369,8 +1228,7 @@
 
     opacity: 0.08;
 
-    transform:
-      translateX(-50%);
+    transform: translateX(-50%);
   }
 
   .circleOne {
@@ -1385,7 +1243,6 @@
   }
 }
 
-
 /* =========================
    SMALL MOBILE
 ========================= */
@@ -1394,19 +1251,14 @@
   .packageGrid {
     gap: 70px;
 
-    padding:
-      100px
-      12px
-      70px;
+    padding: 100px 12px 70px;
   }
 
   .exit {
     top: 10px;
     left: 8px;
 
-    padding:
-      7px
-      10px;
+    padding: 7px 10px;
 
     font-size: 0.52rem;
   }
@@ -1426,8 +1278,24 @@
     display: none;
   }
 }
+@media (max-width: 760px) {
+  .packageIntro {
+    grid-template-columns: 1fr;
+    gap: 22px;
 
+    margin-bottom: 34px;
+    padding-bottom: 26px;
+  }
 
+  .packageIntro h1 {
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+  }
+
+  .packageIntroCopy p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+}
 /* =========================
    REDUCED MOTION
 ========================= */
