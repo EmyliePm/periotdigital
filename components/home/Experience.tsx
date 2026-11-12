@@ -273,15 +273,24 @@ export default function Experience() {
               FOR BUSINESSES
             </h1>
           </div>
-
+ 
           <div className={styles.packageIntroCopy}>
             <p>
               Affordable, modern websites for small businesses, organisations
               and independent brands across the UK — designed and developed by
               Periot Digital in West Yorkshire.
-            </p>
 
-            <span>SELECT A WEBSITE PACKAGE ↓</span>
+            </p>
+<div className={styles.introActions}>
+  <Link
+    href="/contact"
+    className={styles.secondaryAction}
+  >
+    Click HERE TO MAKE AN ENQUIRY
+  </Link>
+<span>or</span>
+  <span>SELECT A WEBSITE PACKAGE BELOW ↓</span>
+</div>
           </div>
         </section>
 

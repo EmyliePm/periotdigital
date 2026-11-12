@@ -8,7 +8,18 @@
   background: #000;
   color: white;
 }
+.introActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+    color: rgba(78, 161, 255, 0.78);
 
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 /* =========================
    EXIT BUTTON
 ========================= */
