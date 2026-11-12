@@ -1,6 +1,7 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 
 const inter = Inter({
@@ -14,7 +15,7 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Periot Digital",
   description: "Premium web design, branding and digital experiences.",
 };
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${cormorant.variable}`}>
         {children}
+        <GoogleAnalytics gaId="G-V118L4LK6F" />
       </body>
     </html>
   );
