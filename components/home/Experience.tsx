@@ -286,7 +286,7 @@ export default function Experience() {
     href="/contact"
     className={styles.secondaryAction}
   >
-    Click HERE TO MAKE AN ENQUIRY
+    MAKE AN ENQUIRY
   </Link>
 <span>or</span>
   <span>SELECT A WEBSITE PACKAGE BELOW ↓</span>
