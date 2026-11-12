@@ -1,14 +1,16 @@
 .hero {
-  .hero {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 100svh;
-    overflow: hidden;
-    isolation: isolate;
-  }
-}
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  min-height: 100svh;
+  padding: 60px 24px;
+
+  overflow: hidden;
+  isolation: isolate;
+}
 /* Soft central blue atmosphere */
 
 .glow {
@@ -164,10 +166,11 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 120px 24px;
+  width: 100%;
+  padding: 0;
+
   text-align: center;
 }
-
 .eyebrow {
   margin-bottom: 34px;
 
@@ -244,15 +247,15 @@
 /* Bottom entrance cue */
 
 .scroll {
-  position: absolute;
-  bottom: 34px;
-  left: 50%;
+  position: relative;
   z-index: 3;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 13px;
+
+  margin-top: 55px;
 
   font-size: 0.62rem;
   font-weight: 500;
@@ -262,7 +265,6 @@
   color: rgba(255, 255, 255, 0.38);
 
   opacity: 0;
-  transform: translateX(-50%);
   animation: revealScroll 1.5s ease 5.6s forwards;
 }
 
@@ -312,9 +314,14 @@
 }
 
 @keyframes revealScroll {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -363,8 +370,12 @@
 }
 
 @media (max-width: 650px) {
+  .hero {
+    padding: 40px 16px;
+  }
+
   .heading {
-    font-size: clamp(4rem, 21vw, 7rem);
+    font-size: clamp(3rem, 18vw, 7rem);
   }
 
   .heading span:last-child {
@@ -380,6 +391,21 @@
 
   .tagline {
     margin-top: 42px;
+  }
+
+  .scroll {
+    margin-top: 40px;
+  }
+}
+
+@media (max-height: 550px) {
+  .hero {
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+
+  .scroll {
+    margin-top: 30px;
   }
 }
 
