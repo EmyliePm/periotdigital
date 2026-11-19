@@ -170,36 +170,6 @@ export default function Experience() {
         <div className={styles.nebulaSecondary} />
       </div>
 
-      {/* Boot sequence */}
-      <section className={styles.boot}>
-        <div className={styles.bootMessages}>
-          <p className={styles.bootText}>
-            INITIALISING
-            <span className={styles.loading}>
-              <span>.</span>
-              <span>.</span>
-              <span>.</span>
-            </span>
-          </p>
-
-          <p className={styles.bootText}>
-            SYNCHRONISING ASSETS
-            <span className={styles.loading}>
-              <span>.</span>
-              <span>.</span>
-              <span>.</span>
-            </span>
-          </p>
-
-          <p className={styles.connected}>&gt; LINK ESTABLISHED</p>
-        </div>
-      </section>
-
-      {/* Digital pulse */}
-      <div className={styles.pulse} aria-hidden="true">
-        <div className={styles.ring} />
-      </div>
-
       {/* Workspace */}
       <section className={styles.workspace}>
         {/* Main debris */}

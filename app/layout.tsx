@@ -16,11 +16,13 @@ const cormorant = Cormorant_Garamond({
 });
 
 
+
 export const metadata: Metadata = {
-  title: "Affordable Bespoke Web Design UK | Periot Digital",
+  title: "Affordable Bespoke Web Design | Periot Digital",
   description:
-    "Affordable bespoke web design for small businesses, charities and independent brands across the UK. Modern, responsive websites from £299.",
+    "Affordable bespoke websites for small businesses, startups and independent brands worldwide. Modern, responsive web design from £299. UK-based, working internationally.",
 };
+
 
 
 export default function RootLayout({
