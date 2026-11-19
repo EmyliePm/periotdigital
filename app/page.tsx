@@ -1,9 +1,8 @@
-import Hero from "@/components/home/Hero";
+
+import Experience from "@/components/home/Experience";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-    </main>
+    <Experience />
   );
 }

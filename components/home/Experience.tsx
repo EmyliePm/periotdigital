@@ -161,13 +161,6 @@ export default function Experience() {
 
   return (
     <main className={styles.experience}>
-      {/* Exit */}
-      {!selectedPackage && (
-        <Link href="/" className={styles.exit}>
-          <span aria-hidden="true">◄</span>
-          <span>EXIT</span>
-        </Link>
-      )}
 
       {/* Deep space */}
       <div className={styles.background} aria-hidden="true">

@@ -15,10 +15,13 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+
 export const metadata: Metadata = {
-  title: "Periot Digital",
-  description: "Premium web design, branding and digital experiences.",
+  title: "Affordable Bespoke Web Design UK | Periot Digital",
+  description:
+    "Affordable bespoke web design for small businesses, charities and independent brands across the UK. Modern, responsive websites from £299.",
 };
+
 
 export default function RootLayout({
   children,
