@@ -1482,3 +1482,14 @@
 .shape {
   animation-delay: 0s, 0s;
 }
+
+/* =========================
+   MOBILE: SKIP INTRO OVERLAY
+========================= */
+
+@media (max-width: 800px) {
+  .boot,
+  .pulse {
+    display: none;
+  }
+}

@@ -1336,3 +1336,20 @@
 .signatureTheme .scanner {
   animation-delay: 8.7s;
 }
+
+@media (max-width: 800px) {
+  .essentialTheme,
+  .enhancedTheme,
+  .signatureTheme {
+    animation-delay: 0s, 0s;
+  }
+
+  .essentialTheme .bootMask,
+  .enhancedTheme .bootMask,
+  .signatureTheme .bootMask,
+  .essentialTheme .scanner,
+  .enhancedTheme .scanner,
+  .signatureTheme .scanner {
+    animation-delay: 0s;
+  }
+}
