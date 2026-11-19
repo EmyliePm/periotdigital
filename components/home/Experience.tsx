@@ -162,6 +162,39 @@ export default function Experience() {
   return (
     <main className={styles.experience}>
 
+{/* Desktop boot sequence */}
+<div className={styles.boot} aria-hidden="true">
+  <div className={styles.bootMessages}>
+    <div className={styles.bootText}>
+      <span>INITIALISING</span>
+      <span className={styles.loading}>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </span>
+    </div>
+
+    <div className={styles.bootText}>
+      <span>SYNCHRONISING ASSETS</span>
+      <span className={styles.loading}>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </span>
+    </div>
+
+    <div className={styles.connected}>
+      &gt; LINK ESTABLISHED
+    </div>
+  </div>
+</div>
+
+{/* Digital explosion */}
+<div className={styles.pulse} aria-hidden="true">
+  <div className={styles.ring} />
+</div>
+
+
       {/* Deep space */}
       <div className={styles.background} aria-hidden="true">
         <div className={styles.stars} />
