@@ -597,19 +597,15 @@
    WORKSPACE
 ========================= */
 
+
 .workspace {
   position: relative;
-
   z-index: 10;
-
   min-height: 100svh;
-
-  opacity: 0;
-
-  filter: blur(12px);
-
-  animation: workspaceReveal 1.2s 6.8s forwards;
+  opacity: 1;
+  filter: none;
 }
+
 
 @keyframes workspaceReveal {
   from {
@@ -1344,4 +1340,145 @@
   .boot {
     display: none;
   }
+}
+
+/* =========================
+   SEO / WHY PERIOT
+========================= */
+
+.seoSection {
+  position: relative;
+  z-index: 12;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 34px 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.seoHeading {
+  max-width: 760px;
+  margin-bottom: 55px;
+}
+
+.seoHeading > span,
+.seoCard > span {
+  display: block;
+  margin-bottom: 18px;
+  color: #5bffb6;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.seoHeading h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.8rem, 3.2vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.seoHeading p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.seoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 45px;
+}
+
+.seoCard {
+  padding: 32px;
+  border: 1px solid rgba(78, 161, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(12, 18, 32, 0.65);
+  backdrop-filter: blur(12px);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.seoCard:hover {
+  border-color: rgba(91, 255, 182, 0.4);
+  transform: translateY(-4px);
+}
+
+.seoCard h3 {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.seoCard p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.seoContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 22px;
+  border: 1px solid rgba(91, 255, 182, 0.45);
+  border-radius: 6px;
+  color: #5bffb6;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  transition: background 0.25s ease;
+}
+
+.seoContact:hover {
+  background: rgba(91, 255, 182, 0.08);
+}
+
+@media (max-width: 800px) {
+  .seoSection {
+    padding: 60px 22px 90px;
+  }
+
+  .seoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .seoCard {
+    padding: 26px;
+  }
+}
+
+@media (min-width: 801px) {
+  .workspace {
+    padding-bottom: 80px;
+  }
+
+  .packageGrid {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 95%;
+    margin: 60px auto 100px;
+  }
+}
+
+/* Show the space background immediately */
+
+.stars,
+.brightStars,
+.nebula,
+.nebulaSecondary,
+.debrisFar {
+  animation-delay: 0s;
+}
+
+.fragment,
+.shape {
+  animation-delay: 0s, 0s;
 }

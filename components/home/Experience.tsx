@@ -260,20 +260,24 @@ export default function Experience() {
               PERIOT / WEB DESIGN
             </span>
 
-            <h1>
-              UK WEBSITE DESIGN
-              <br />
-              FOR BUSINESSES
-            </h1>
+
+<h1>
+  AFFORDABLE BESPOKE
+  <br />
+  WEB DESIGN
+</h1>
+
           </div>
  
           <div className={styles.packageIntroCopy}>
-            <p>
-              Affordable, modern websites for small businesses, organisations
-              and independent brands across the UK — designed and developed by
-              Periot Digital in West Yorkshire.
 
-            </p>
+<p>
+  Affordable, modern websites for small businesses,
+  startups and independent brands worldwide.
+  Designed and developed by Periot Digital,
+  an independent web design studio based in the UK.
+</p>
+
 <div className={styles.introActions}>
   <Link
     href="/contact"
@@ -309,6 +313,65 @@ export default function Experience() {
             hidden={selectedPackage !== null}
           />
         </div>
+
+<section
+  className={styles.seoSection}
+  aria-labelledby="why-periot"
+>
+  <div className={styles.seoHeading}>
+    <span>THE PERIOT APPROACH</span>
+    <h2 id="why-periot">
+      BESPOKE WEB DESIGN.
+      <br />
+      WITHOUT THE PREMIUM PRICE TAG.
+    </h2>
+    <p>
+      Professional websites should be accessible to businesses
+      of all sizes. We combine thoughtful design, modern
+      development and transparent pricing to create websites
+      that work for your business.
+    </p>
+  </div>
+
+  <div className={styles.seoGrid}>
+    <article className={styles.seoCard}>
+      <span>01 / DESIGN</span>
+      <h3>Bespoke websites</h3>
+      <p>
+        Your business deserves more than a generic template.
+        We create responsive websites tailored to your brand,
+        services and customers.
+      </p>
+    </article>
+
+    <article className={styles.seoCard}>
+      <span>02 / PRICING</span>
+      <h3>Affordable web design</h3>
+      <p>
+        Clear website packages starting from £299.
+        Whether you're launching a new business or
+        refreshing an existing website, we'll help you
+        find the right solution.
+      </p>
+    </article>
+
+    <article className={styles.seoCard}>
+      <span>03 / WORLDWIDE</span>
+      <h3>Web design without borders</h3>
+      <p>
+        Based in West Yorkshire, England, and working
+        remotely with businesses worldwide. Great websites
+        don't need geographical boundaries.
+      </p>
+    </article>
+  </div>
+
+  <Link href="/contact" className={styles.seoContact}>
+    DISCUSS YOUR WEBSITE
+    <span aria-hidden="true">↗</span>
+  </Link>
+</section>
+
       </section>
 
       {/* Package viewer */}

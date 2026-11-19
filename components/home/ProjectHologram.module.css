@@ -1287,3 +1287,52 @@
     letter-spacing: 0.12em;
   }
 }
+
+/* =========================
+   HOLOGRAM TIMING
+   Reveal after the explosion
+========================= */
+
+.essentialTheme {
+  animation-delay: 7.4s, 8.2s;
+}
+
+.enhancedTheme {
+  animation-delay: 7.65s, 8.45s;
+}
+
+.signatureTheme {
+  animation-delay: 7.9s, 8.7s;
+}
+
+/* Keep the original reveal effect,
+   but make it quicker */
+.hologram {
+  animation-duration: 0.7s, 6s;
+}
+
+/* Assemble each hologram after it appears */
+.essentialTheme .bootMask {
+  animation-delay: 7.4s;
+}
+
+.enhancedTheme .bootMask {
+  animation-delay: 7.65s;
+}
+
+.signatureTheme .bootMask {
+  animation-delay: 7.9s;
+}
+
+/* Scanner effects */
+.essentialTheme .scanner {
+  animation-delay: 8.2s;
+}
+
+.enhancedTheme .scanner {
+  animation-delay: 8.45s;
+}
+
+.signatureTheme .scanner {
+  animation-delay: 8.7s;
+}
