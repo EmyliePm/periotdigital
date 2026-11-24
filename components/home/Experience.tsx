@@ -6,6 +6,7 @@ import Link from "next/link";
 import ProjectHologram from "./ProjectHologram";
 import ProjectViewer from "./ProjectViewer";
 import styles from "./Experience.module.css";
+import PortfolioViewer from "./PortfolioViewer";
 
 export type PackageData = {
   id: string;
@@ -100,39 +101,25 @@ const packageData = {
     available: true,
   },
 
-  signature: {
+
+  projects: {
     id: "03",
-    name: "SIGNATURE",
-    price: "£1500",
-    carePrice: "CUSTOM",
+    name: "PROJECTS",
+    price: "",
+    carePrice: "",
 
     tagline:
-      "Flagship digital experiences designed entirely around your business.",
+      "Explore our work, independent projects and interactive digital experiences.",
 
     exampleName: "PERIOT DIGITAL",
-    exampleBusiness: "Periot Digital",
+    exampleBusiness: "Independent Development",
 
-    included: [
-      "Everything in Enhanced",
-      "Completely tailored experience",
-      "Advanced interactions",
-      "Custom functionality",
-      "Integrations",
-      "UX strategy",
-      "Advanced animations",
-      "Bespoke development",
-    ],
+    included: [],
+    idealFor: [],
 
-    idealFor: [
-      "Established brands",
-      "Ambitious businesses",
-      "Digital-first companies",
-      "Businesses needing custom functionality",
-      "Brands wanting something unforgettable",
-    ],
-
-    available: false,
+    available: true,
   },
+
 } satisfies Record<string, PackageData>;
 
 type PackageKey = keyof typeof packageData;
@@ -161,38 +148,6 @@ export default function Experience() {
 
   return (
     <main className={styles.experience}>
-
-{/* Desktop boot sequence */}
-<div className={styles.boot} aria-hidden="true">
-  <div className={styles.bootMessages}>
-    <div className={styles.bootText}>
-      <span>INITIALISING</span>
-      <span className={styles.loading}>
-        <span>.</span>
-        <span>.</span>
-        <span>.</span>
-      </span>
-    </div>
-
-    <div className={styles.bootText}>
-      <span>SYNCHRONISING ASSETS</span>
-      <span className={styles.loading}>
-        <span>.</span>
-        <span>.</span>
-        <span>.</span>
-      </span>
-    </div>
-
-    <div className={styles.connected}>
-      &gt; LINK ESTABLISHED
-    </div>
-  </div>
-</div>
-
-{/* Digital explosion */}
-<div className={styles.pulse} aria-hidden="true">
-  <div className={styles.ring} />
-</div>
 
 
       {/* Deep space */}
@@ -289,7 +244,7 @@ export default function Experience() {
     MAKE AN ENQUIRY
   </Link>
 <span>or</span>
-  <span>SELECT A WEBSITE PACKAGE BELOW ↓</span>
+<span>EXPLORE OUR SERVICES & PROJECTS ↓</span>
 </div>
           </div>
         </section>
@@ -309,12 +264,14 @@ export default function Experience() {
             hidden={selectedPackage !== null}
           />
 
-          <ProjectHologram
-            packageData={packageData.signature}
-            variant="signature"
-            onSelect={() => {}}
-            hidden={selectedPackage !== null}
-          />
+
+<ProjectHologram
+  packageData={packageData.projects}
+  variant="signature"
+  onSelect={() => setSelectedPackage("projects")}
+  hidden={selectedPackage !== null}
+/>
+
         </div>
 
 <section
@@ -377,14 +334,23 @@ export default function Experience() {
 
       </section>
 
-      {/* Package viewer */}
-      {selectedPackage && (
-        <ProjectViewer
-          key={selectedPackage}
-          packageData={packageData[selectedPackage]}
-          onClose={() => setSelectedPackage(null)}
-        />
-      )}
+
+{/* Portfolio viewer */}
+{selectedPackage === "projects" && (
+  <PortfolioViewer
+    onClose={() => setSelectedPackage(null)}
+  />
+)}
+
+{/* Package viewer */}
+{selectedPackage && selectedPackage !== "projects" && (
+  <ProjectViewer
+    key={selectedPackage}
+    packageData={packageData[selectedPackage]}
+    onClose={() => setSelectedPackage(null)}
+  />
+)}
+
     </main>
   );
 }

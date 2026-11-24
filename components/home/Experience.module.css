@@ -1493,3 +1493,23 @@
     display: none;
   }
 }
+/* Immediate workspace visibility */
+.workspace {
+  opacity: 1;
+  filter: none;
+  animation: none;
+}
+
+/* Start background effects immediately */
+.stars,
+.brightStars,
+.nebula,
+.nebulaSecondary,
+.debrisFar {
+  animation-delay: 0s;
+}
+
+.fragment,
+.shape {
+  animation-delay: 0s, 0s;
+}

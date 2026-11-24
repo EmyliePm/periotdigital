@@ -15,6 +15,7 @@ export default function ProjectHologram({
   hidden = false,
 }: ProjectHologramProps) {
   const isLocked = !packageData.available;
+  const isProjects = variant === "signature";
 
   const positionClass = {
     essential: styles.essentialPosition,
@@ -42,21 +43,25 @@ export default function ProjectHologram({
       <div className={`${styles.position} ${positionClass}`}>
         <div className={`${styles.hologram} ${themeClass}`}>
           <div className={styles.meta}>
-            <span>PACKAGE_{packageData.id}</span>
+          <span>
+  {isProjects ? "PORTFOLIO" : "PACKAGE"}_{packageData.id}
+</span>
 
             <span
               className={`${styles.status} ${
                 isLocked ? styles.statusLocked : ""
               }`}
             >
-              {isLocked ? "IN DEVELOPMENT" : "AVAILABLE"}
+         {isProjects ? "ACTIVE" : isLocked ? "IN DEVELOPMENT" : "AVAILABLE"}
             </span>
           </div>
 
           <div className={styles.titleRow}>
             <h2>{packageData.name}</h2>
 
-            <span>FROM {packageData.price}</span>
+          <span>
+  {isProjects ? "EXPLORE" : `FROM ${packageData.price}`}
+</span>
           </div>
 
           <div className={styles.frame}>
@@ -160,17 +165,17 @@ export default function ProjectHologram({
                   <div className={styles.signatureCoreInner} />
                 </div>
 
-                <div className={styles.signatureText}>
-                  <span>SIGNATURE BUILD</span>
+        <div className={styles.signatureText}>
+  <span>PERIOT DIGITAL</span>
 
-                  <strong>PREVIEW LOCKED</strong>
+  <strong>BEYOND THE WEB</strong>
 
-                  <small>
-                    FLAGSHIP EXPERIENCE
-                    <br />
-                    IN DEVELOPMENT
-                  </small>
-                </div>
+  <small>
+    WEBSITES / APPLICATIONS
+    <br />
+    INTERACTIVE EXPERIENCES
+  </small>
+</div>
               </div>
             )}
 
@@ -188,10 +193,12 @@ export default function ProjectHologram({
             <span>
               {variant === "essential" && "SYSTEM / STRUCTURE"}
               {variant === "enhanced" && "SYSTEM / INTERFACE"}
-              {variant === "signature" && "SYSTEM / SIGNATURE"}
+        {isProjects && "SYSTEM / PORTFOLIO"}
             </span>
 
-            <span>{isLocked ? "PREVIEW LOCKED" : "↗ INSPECT"}</span>
+   <span>
+  {isProjects ? "↗ EXPLORE" : isLocked ? "PREVIEW LOCKED" : "↗ INSPECT"}
+</span>
           </div>
         </div>
       </div>
