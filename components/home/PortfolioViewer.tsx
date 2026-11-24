@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -44,13 +43,21 @@ const projects: Project[] = [
     url: null,
     technologies: ["React", "Three.js", "TypeScript", "Electron"],
   },
+  {
+    id: "prepare",
+    name: "Prepare",
+    category: "Web Application",
+    status: "Pre-Launch",
+    description:
+      "A household emergency preparedness application designed to help individuals and families assess their readiness, calculate essential supplies and create personalised emergency checklists.",
+    image: "/images/projects/prepare.jpg",
+    url: "https://prepare-household-demo.netlify.app/",
+    technologies: ["Next.js", "React", "TypeScript", "Application Development"],
+  },
 ];
 
-export default function PortfolioViewer({
-  onClose,
-}: PortfolioViewerProps) {
-  const [selectedProject, setSelectedProject] =
-    useState<Project | null>(null);
+export default function PortfolioViewer({ onClose }: PortfolioViewerProps) {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -129,21 +136,15 @@ export default function PortfolioViewer({
                       </div>
                     )}
 
-                    <span className={styles.status}>
-                      {project.status}
-                    </span>
+                    <span className={styles.status}>{project.status}</span>
                   </div>
 
                   <div className={styles.cardContent}>
-                    <span className={styles.category}>
-                      {project.category}
-                    </span>
+                    <span className={styles.category}>{project.category}</span>
 
                     <h3>{project.name}</h3>
 
-                    <span className={styles.inspect}>
-                      VIEW PROJECT ↗
-                    </span>
+                    <span className={styles.inspect}>VIEW PROJECT ↗</span>
                   </div>
                 </button>
               ))}
@@ -160,15 +161,11 @@ export default function PortfolioViewer({
                 </div>
 
                 <div className={styles.cardContent}>
-                  <span className={styles.category}>
-                    Bespoke Development
-                  </span>
+                  <span className={styles.category}>Bespoke Development</span>
 
                   <h3>Let's build something.</h3>
 
-                  <span className={styles.inspect}>
-                    MAKE AN ENQUIRY ↗
-                  </span>
+                  <span className={styles.inspect}>MAKE AN ENQUIRY ↗</span>
                 </div>
               </Link>
             </div>
@@ -218,9 +215,7 @@ export default function PortfolioViewer({
               )}
             </div>
 
-            <p className={styles.description}>
-              {selectedProject.description}
-            </p>
+            <p className={styles.description}>{selectedProject.description}</p>
 
             <div className={styles.technologies}>
               {selectedProject.technologies.map((technology) => (
