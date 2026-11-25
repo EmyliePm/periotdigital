@@ -171,7 +171,11 @@ export default function PortfolioViewer({ onClose }: PortfolioViewerProps) {
             </div>
 
             <footer className={styles.footer}>
-              WEBSITES / APPLICATIONS / INTERACTIVE EXPERIENCES
+              <span>WEBSITES / APPLICATIONS / INTERACTIVE EXPERIENCES</span>
+
+              <div className={styles.footerLinks}>
+                <Link href="/privacy">Privacy & Cookies</Link>
+              </div>
             </footer>
           </>
         ) : (

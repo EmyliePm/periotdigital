@@ -1,0 +1,45 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+
+  color: #e2e8f0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.page h1 {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 24px 0;
+}
+
+.page h2 {
+  font-size: 21px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 32px 0 12px;
+}
+
+.page p {
+  margin-bottom: 16px;
+}
+
+.page ul {
+  padding-left: 24px;
+  margin-bottom: 20px;
+  list-style: disc;
+}
+
+.page a {
+  color: #93b9ec;
+  text-decoration: underline;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}

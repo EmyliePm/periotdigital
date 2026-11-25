@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import styles from "./ProjectInitialiser.module.css";
 
 type PackageOption = "essential" | "enhanced" | "signature" | "not-sure";
@@ -82,7 +82,11 @@ export default function ProjectInitialiser() {
 
   const scrambleTimer = useRef<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    setCaptchaToken(null);
+  }, [step]);
   const [transmitStage, setTransmitStage] = useState(0);
 
   useEffect(() => {
@@ -183,7 +187,11 @@ export default function ProjectInitialiser() {
   }
 
   function canSubmit() {
-    return formData.name.trim() !== "" && formData.email.trim() !== "";
+    return (
+      formData.name.trim() !== "" &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim()) &&
+      Boolean(captchaToken)
+    );
   }
 
   async function handleTransmit() {
@@ -209,6 +217,7 @@ export default function ProjectInitialiser() {
 
       const payload = {
         access_key: "4c47710e-8cde-47d0-a82e-cfbcc09180a0",
+        "h-captcha-response": captchaToken,
 
         subject: `New Periot Digital enquiry — ${
           formData.businessName || formData.name
@@ -261,6 +270,7 @@ export default function ProjectInitialiser() {
       await wait(700);
 
       setTransmitting(false);
+      setCaptchaToken(null);
       setSubmitted(true);
     } catch (error) {
       console.error("Contact form error:", error);
@@ -444,7 +454,29 @@ export default function ProjectInitialiser() {
           )}
 
           {step === 5 && (
-            <ContactStage formData={formData} updateField={updateField} />
+            <>
+              <ContactStage formData={formData} updateField={updateField} />
+
+              <div style={{ marginTop: "24px" }}>
+                <HCaptcha
+                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  reCaptchaCompat={false}
+                  theme="dark"
+                  onVerify={(token) => setCaptchaToken(token)}
+                  onExpire={() => setCaptchaToken(null)}
+                  onError={() => setCaptchaToken(null)}
+                />
+              </div>
+
+              <p className={styles.supportNote}>
+                Your information will only be used to respond to your enquiry
+                and discuss your project. Read our{" "}
+                <Link href="/privacy" target="_blank">
+                  Privacy & Cookie Policy
+                </Link>
+                .
+              </p>
+            </>
           )}
         </div>
 
