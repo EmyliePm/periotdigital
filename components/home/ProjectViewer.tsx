@@ -57,7 +57,7 @@ export default function ProjectViewer({
           </div>
 
           <div className={styles.price}>
-            <span>FROM</span>
+            <span>ONE-OFF PRICE FROM</span>
 
             <strong>{packageData.price}</strong>
           </div>
