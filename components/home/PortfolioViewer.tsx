@@ -39,8 +39,8 @@ const projects: Project[] = [
     status: "COMING SOON",
     description:
       "An independent pub management simulation combining interactive cooking, customer service, interior customisation and an explorable 3D environment.",
-    image: null,
-    url: null,
+    image: "/images/projects/prep1.jpg",
+    url: "https://britishpubgame.com",
     technologies: ["React", "Three.js", "TypeScript", "Electron"],
   },
   {
