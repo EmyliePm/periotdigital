@@ -109,7 +109,7 @@ export default function ProjectViewer({
           </div>
 
           <div className={styles.care}>
-            <h3>PERIOT CARE</h3>
+            <h3>PERIOT CARE — OPTIONAL</h3>
 
             <div className={styles.carePrice}>
               <strong>{packageData.carePrice}</strong>
@@ -122,6 +122,14 @@ export default function ProjectViewer({
             <p>New portfolio images added</p>
             <p>Technical maintenance</p>
             <p>Email support</p>
+
+            <p>
+              <strong>No mandatory subscription.</strong>
+            </p>
+            <p>
+              Periot Care is entirely optional and is not required when
+              purchasing your website.
+            </p>
           </div>
         </div>
 
